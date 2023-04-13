@@ -1,0 +1,4 @@
+config SHIELD_SMCBOARD_LEFT
+    def_bool $(shields_list_contains,smcboard_left)
+config SHIELD_SMCBOARD_RIGHT
+    def_bool $(shields_list_contains,smcboard_right)
