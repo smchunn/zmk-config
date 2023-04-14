@@ -68,7 +68,7 @@
 		right_layer {
 		bindings = <
 		&kp ESC &none &none &none &kp LS(MINUS) &kp MINUS &kp N7 &kp N8 &kp N9 &trans
-		&kp TAB &trans &kp C_VOL_DN  &kp C_VOL_UP &kp LS(EQUAL) &kp EQUAL &kp N4 &kp N5 &kp N6 &kp ENTER
+		&kp TAB &none &kp C_VOL_DN  &kp C_VOL_UP &kp LS(EQUAL) &kp EQUAL &kp N4 &kp N5 &kp N6 &kp ENTER
 		&to 4 &kp AMPS &kp SLASH &kp STAR &kp DOT &kp N0 &kp N1 &kp N2 &kp N3 &trans 
 		&to 0 &sk LGUI &sk RALT  &to 2 
 		>;
@@ -85,7 +85,7 @@
 		bt {
 		bindings = <
 		&trans  &trans &trans &trans &trans &trans &trans &trans &trans &trans 
-		&trans  &trans &trans &trans &trans &trans &trans &trans &trans &trans 
+		&bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 3 &trans &trans &trans &trans &trans &trans &trans 
 		&bt BT_PRV  &bt BT_NXT &bt BT_CLR &trans &trans &trans &trans  &trans  &trans &trans   
 		&to 0 &trans &trans &to 1 
 		>;
