@@ -83,8 +83,8 @@
 		nav_layer {
 		bindings = <
 		&kp ESC &none &kp C_VOL_DN &kp C_VOL_UP &none &none &none &none &kp DEL &kp BSPC
-		&kp LSHFT &kp LALT &kp LGUI &none &none &none &kp HOME &kp UP &kp END &kp ENTER
-		&to OPT &none &kp C_BRI_DN &kp C_BRI_UP &none &none &kp LEFT &kp DOWN &kp RIGHT &kp TAB
+		&kp LSHFT &kp LALT &kp LCTRL &kp LGUI &none &kp PG_UP &kp HOME &kp UP &kp END &kp ENTER
+		&to OPT &none &kp C_BRI_DN &kp C_BRI_UP &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &kp TAB
 		&none &none &trans &none
 		>;
 		};
