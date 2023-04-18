@@ -54,49 +54,49 @@
 			compatible = "zmk,keymap";
 				
 			default_layer {
-		bindings = <
-		&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &none
-		&kp A &hm LALT R &hm LCTRL S &hm LGUI T &kp G &kp M &hm RGUI N &hm RCTRL E &hm RALT I &kp O
-		&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &td MINUS COMMA &td EXCL DOT &td UNDERSCORE SLASH  
-		&mt LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &to SYM
-		>;
-		};
+				bindings = <
+					&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &none
+					&kp A &hm LALT R &hm LCTRL S &hm LGUI T &kp G &kp M &hm RGUI N &hm RCTRL E &hm RALT I &kp O
+					&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &td MINUS COMMA &td EXCL DOT &td UNDERSCORE SLASH  
+					&mt LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &to SYM
+				>;
+			};
 
 			symbol_layer {
-		bindings = <
-		&kp EXCL &kp ATSN &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp STAR &kp SEMI &none 
-		&kp LSHFT &hm LALT EQUAL &hm LCTRL PLUS &hm LGUI DQT &kp SQT &kp LBRC &hm RGUI LBKT &hm RCTRL RBKT &hm RALT RBRC &kp RSHFT
-		&kp TILDE &kp MINUS &kp UNDER &kp BSLH &kp PIPE &kp LT &kp LPRN &kp RPRN &kp GT &none 
-		&to BASE  &kp LSHIFT &trans &to NUM
-		>;
-		};
+				bindings = <
+					&kp EXCL &kp ATSN &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp STAR &kp SEMI &none 
+					&kp LSHFT &hm LALT EQUAL &hm LCTRL PLUS &hm LGUI DQT &kp SQT &kp LBRC &hm RGUI LBKT &hm RCTRL RBKT &hm RALT RBRC &kp RSHFT
+					&kp TILDE &kp MINUS &kp UNDER &kp BSLH &kp PIPE &kp LT &kp LPRN &kp RPRN &kp GT &none 
+					&to BASE &kp LSHIFT &trans &to NUM
+				>;
+			};
 		
-		number_layer {
-		bindings = <
-		&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-		&kp LSHFT &kp LALT &kp LCTRL &kp LGUI &kp F11 &kp F12 &kp RGUI &kp RCTRL &kp RALT &kp RSHFT
-		&kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 
-		&to BASE &none &trans  &to SYM
-		>;
-		};
+			number_layer {
+				bindings = <
+					&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
+					&kp LSHFT &kp LALT &kp LCTRL &kp LGUI &kp F11 &kp F12 &kp RGUI &kp RCTRL &kp RALT &kp RSHFT
+					&kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 
+					&to BASE &none &trans &to SYM
+				>;
+			};
 		
-		nav_layer {
-		bindings = <
-		&kp ESC &none &kp C_VOL_DN &kp C_VOL_UP &none &none &none &none &kp DEL &kp BSPC
-		&kp LSHFT &kp LALT &kp LCTRL &kp LGUI &none &kp PG_UP &kp HOME &kp UP &kp END &kp ENTER
-		&to OPT &none &kp C_BRI_DN &kp C_BRI_UP &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &kp TAB
-		&none &none &trans &none
-		>;
-		};
+			nav_layer {
+				bindings = <
+					&kp ESC &none &kp C_VOL_DN &kp C_VOL_UP &none &kp ESC &kp TAB &none &kp DEL &kp BSPC
+					&kp LSHFT &kp LALT &kp LCTRL &kp LGUI &none &kp PG_UP &kp HOME &kp UP &kp END &kp ENTER
+					&to OPT &none &kp C_BRI_DN &kp C_BRI_UP &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none
+					&to BASE &kp LSHIFT &trans &none
+				>;
+			};
 
-		option_layer {
-		bindings = <
-		&none &none &none &none &none &none &none &none &none &none 
-		&bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 3 &none &none &none &none &none &none &none  
-		&bt BT_PRV  &bt BT_NXT &bt BT_CLR &none &none &none &none &none &none &none    
-		&to BASE &none &trans &to SYM
-		>;
-		};	
+			option_layer {
+				bindings = <
+					&none &none &none &none &none &none &none &none &none &none 
+					&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 3 &none &none &none &none &none &none &none  
+					&bt BT_PRV &bt BT_NXT &bt BT_CLR &none &none &none &none &none &none &none    
+					&to BASE &none &trans &to SYM
+				>;
+			};
 		
 	};
 };
