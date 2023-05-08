@@ -55,7 +55,8 @@
 			tapping-term-ms = <150>;
 			quick_tap_ms = <0>;
 			flavor = "tap-preferred";
-			bindings = <&to>, <&mo>;
+			retro-tap;
+			bindings = <&mo>, <&to>;
 		};
 	};
 
@@ -76,7 +77,7 @@
 					&kp EXCL &kp ATSN &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp STAR &kp SEMI &none 
 					&kp LSHFT &hm LALT EQUAL &hm LCTRL PLUS &hm LGUI DQT &kp SQT &kp LBRC &hm RGUI LBKT &hm RCTRL RBKT &hm RALT RBRC &kp RSHFT
 					&kp TILDE &kp MINUS &kp UNDER &kp BSLH &kp PIPE &kp LT &kp LPRN &kp RPRN &kp GT &none 
-					&to BASE &kp LSHIFT &llt BASE NAV &to NUM
+					&to BASE &kp LSHIFT &llt NAV BASE &to NUM
 				>;
 			};
 		
