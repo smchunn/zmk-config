@@ -68,7 +68,7 @@
 					&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &none
 					&hm LSHIFT A &hm LALT R &hm LCTRL S &hm LGUI T &kp G &kp M &hm RGUI N &hm RCTRL E &hm RALT I &hm RSHIFT O
 					&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &td MINUS COMMA &td EXCL DOT &td UNDERSCORE SLASH  
-					&mt LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &to SYM
+					&mt LC(LS(LALT)) SPC &kp LSHIFT &llt NAV BASE &to SYM
 				>;
 			};
 
@@ -77,7 +77,7 @@
 					&kp EXCL &kp ATSN &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp STAR &kp SEMI &none 
 					&kp LSHFT &hm LALT EQUAL &hm LCTRL PLUS &hm LGUI DQT &kp SQT &kp LBRC &hm RGUI LBKT &hm RCTRL RBKT &hm RALT RBRC &kp RSHFT
 					&kp TILDE &kp MINUS &kp UNDER &kp BSLH &kp PIPE &kp LT &kp LPRN &kp RPRN &kp GT &none 
-					&trans &kp LSHIFT &llt NAV BASE &to NUM
+					&trans &kp LSHIFT &trans &to NUM
 				>;,
 			};
 		
@@ -86,7 +86,7 @@
 					&kp F11 &none &none &none &none &none &none &none &none &kp F12
 					&hm LSHFT N1 &hm LALT N2 &hm LCTRL N3 &hm LGUI N4 &kp N5 &kp N6 &hm RGUI N7 &hm RCTRL N8 &hm RALT N9 &hm RSHFT N0
 					&kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 
-					&trans &none &llt NAV BASE &to SYM
+					&trans &none &trans &to SYM
 				>;
 			};
 		
@@ -95,7 +95,7 @@
 					&kp ESC &none &kp C_VOL_DN &kp C_VOL_UP &none &kp ESC &kp TAB &none &kp DEL &kp BSPC
 					&kp LSHFT &kp LALT &kp LCTRL &kp LGUI &none &kp PG_UP &kp HOME &kp UP &kp END &kp ENTER
 					&to OPT &none &kp C_BRI_DN &kp C_BRI_UP &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none
-					&trans &kp LSHIFT &llt NAV BASE &none
+					&trans &kp LSHIFT &trans &none
 				>;
 			};
 
