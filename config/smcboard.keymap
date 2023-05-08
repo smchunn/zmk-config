@@ -48,6 +48,15 @@
 			flavor = "tap-preferred";
 			bindings = <&kp>, <&kp>;
 		};
+		llt: layerlayertap {
+			compatible = "zmk,behavior-hold-tap";
+			label = "LAYERLAYERTAP";
+			#binding-cells = <2>;
+			tapping-term-ms = <150>;
+			quick_tap_ms = <0>;
+			flavor = "tap-preferred";
+			bindings = <&to>, <&mo>;
+		};
 	};
 
 		keymap {
@@ -56,7 +65,7 @@
 			default_layer {
 				bindings = <
 					&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &none
-					&kp A &hm LALT R &hm LCTRL S &hm LGUI T &kp G &kp M &hm RGUI N &hm RCTRL E &hm RALT I &kp O
+					&hm LSHIFT A &hm LALT R &hm LCTRL S &hm LGUI T &kp G &kp M &hm RGUI N &hm RCTRL E &hm RALT I &hm RSHIFT O
 					&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &td MINUS COMMA &td EXCL DOT &td UNDERSCORE SLASH  
 					&mt LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &to SYM
 				>;
@@ -67,7 +76,7 @@
 					&kp EXCL &kp ATSN &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp STAR &kp SEMI &none 
 					&kp LSHFT &hm LALT EQUAL &hm LCTRL PLUS &hm LGUI DQT &kp SQT &kp LBRC &hm RGUI LBKT &hm RCTRL RBKT &hm RALT RBRC &kp RSHFT
 					&kp TILDE &kp MINUS &kp UNDER &kp BSLH &kp PIPE &kp LT &kp LPRN &kp RPRN &kp GT &none 
-					&to BASE &kp LSHIFT &trans &to NUM
+					&to BASE &kp LSHIFT &llt BASE NAV &to NUM
 				>;
 			};
 		
@@ -92,7 +101,7 @@
 			option_layer {
 				bindings = <
 					&none &none &none &none &none &none &none &none &none &none 
-					&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 3 &none &none &none &none &none &none &none  
+					&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none &none &none &none &none &none &none  
 					&bt BT_PRV &bt BT_NXT &bt BT_CLR &none &none &none &none &none &none &none    
 					&to BASE &none &trans &to SYM
 				>;
