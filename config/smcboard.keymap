@@ -78,7 +78,7 @@
 					&kp LSHFT &hm LALT EQUAL &hm LCTRL PLUS &hm LGUI DQT &kp SQT &kp LBRC &hm RGUI LBKT &hm RCTRL RBKT &hm RALT RBRC &kp RSHFT
 					&kp TILDE &kp MINUS &kp UNDER &kp BSLH &kp PIPE &kp LT &kp LPRN &kp RPRN &kp GT &none 
 					&trans &kp LSHIFT &trans &to NUM
-				>;,
+				>;
 			};
 		
 			number_layer {
