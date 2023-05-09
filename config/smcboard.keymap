@@ -91,7 +91,7 @@
 		
 			nav_layer {
 				bindings = <
-					&kp ESC &none &kp C_VOL_DN &kp C_VOL_UP &none &kp ESC &kp TAB &none &kp DEL &kp BSPC
+					&kp ESC &none &kp C_VOL_DN &kp C_VOL_UP &none &kp ESC &kp TAB &kp GRAVE &kp DEL &kp BSPC
 					&kp LSHFT &kp LALT &kp LCTRL &kp LGUI &none &kp PG_UP &kp HOME &kp UP &kp END &kp ENTER
 					&none &none &kp C_BRI_DN &kp C_BRI_UP &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none
 					&trans &trans &trans &none
