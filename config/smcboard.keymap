@@ -14,6 +14,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+#define ALL -1
 #define BASE 0
 #define SYM  1
 #define NAV  2
@@ -61,15 +62,53 @@
 
   combos {
     compatible = "zmk,combos";
+    combo_LGUI {
+      timeout-ms = <50>;
+      key-positions = <30 16>;
+      bindings = <&kp LGUI>;
+      layers = <ALL>
+    };
+    combo_LCTRL {
+      timeout-ms = <50>;
+      key-positions = <30 17>;
+      bindings = <&kp LCTRL>;
+      layers = <ALL>
+    };
+    combo_LALT {
+      timeout-ms = <50>;
+      key-positions = <30 18>;
+      bindings = <&kp LALT>;
+      layers = <ALL>
+    };
+    combo_LSHIFT {
+      timeout-ms = <50>;
+      key-positions = <30 17>;
+      bindings = <&kp LSHIFT>;
+      layers = <ALL>
+    };
     combo_RGUI {
       timeout-ms = <50>;
-      key-positions = <30 15>;
-      bindings = <&hm RGUI N>;
+      key-positions = <30 16>;
+      bindings = <&kp RGUI>;
+      layers = <ALL>
     };
     combo_RCTRL {
       timeout-ms = <50>;
-      key-positions = <30 16>;
-      bindings = <&hm RCTRL E>;
+      key-positions = <30 17>;
+      bindings = <&kp RCTRL>;
+      layers = <ALL>
+    };
+    combo_RALT {
+      timeout-ms = <50>;
+      key-positions = <30 18>;
+      bindings = <&kp RALT>;
+      layers = <ALL>
+    };
+    combo_RSHIFT {
+      timeout-ms = <50>;
+      key-positions = <30 17>;
+      bindings = <&kp RSHIFT>;
+      layers = <ALL>
     };
   };
 
@@ -79,7 +118,7 @@
 		default_layer {
 			bindings = <
   			&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SEMI
-				&hm LSHIFT A &hm LALT R &hm LCTRL S &hm LGUI T &kp G &kp M &kp N &hm RCTRL E &hm RALT I &hm RSHIFT O
+				&kp A &kp R &kp S &kp T &kp G &kp M &kp N &kp E &kp I &kp O
 				&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &kp COMMA &kp DOT &kp SLASH
 				&mt LC(LS(LALT)) SPC &kp LSHIFT &llt NAV BASE &mo SYM
 			>;
@@ -88,7 +127,7 @@
 		symbol_layer {
 			bindings = <
 			&none &none &none &none &none &none &none &none &none &none
-			&hm LSHFT N1 &hm LALT N2 &hm LCTRL N3 &hm LGUI N4 &kp N5 &kp N6 &hm RGUI N7 &hm RCTRL N8 &hm RALT N9 &hm RSHFT N0
+			&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
 			&none &none &none &kp TILDE &kp SQT &kp LBKT &kp RBKT &kp MINUS &kp EQUAL &kp BSLH 
 			&trans &trans &trans &trans
 			>;
@@ -96,9 +135,9 @@
 		
 		nav_layer {
 			bindings = <
-				&kp ESC &none &kp C_VOL_DN &kp C_VOL_UP &none &none &kp ESC &kp TAB &kp DEL &kp BSPC
-				&kp LSHFT &kp LALT &kp LCTRL &kp LGUI &none &kp PG_UP &kp HOME &kp UP &kp END &kp ENTER
-				&to NAV &none &kp C_BRI_DN &kp C_BRI_UP &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none
+				&kp ESC &none &none &none &none &none &kp ESC &kp TAB &kp DEL &kp BSPC
+				&kp LSHFT &kp LALT &kp LCTRL &kp LGUI &none &kp LEFT &kp UP &kp DOWN &kp RIGHT &kp ENTER
+				&to NAV &none &none &none &none &kp HOME &kp PG_UP &kp PG_DOWN &kp END &none
 				&trans &trans &trans &none
 			>;
 		};
@@ -106,7 +145,7 @@
 		function_layer {
 			bindings = <
 				&none &kp C_VOL_DN &kp C_VOL_UP &kp F11 &none &none &kp F12 &kp C_BRI_DN &kp C_BRI_UP &none
-				&hm LSHFT F1 &hm LALT F2 &hm LCTRL F3 &hm LGUI F4 &kp F5 &kp F6 &hm RGUI F7 &hm RCTRL F8 &hm RALT F9 &hm RSHFT F10
+				&kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
 				&none &none &bt BT_PRV &bt BT_NXT &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none &none
 				&trans &trans &trans &trans
 			>;
