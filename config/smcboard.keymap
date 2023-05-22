@@ -66,49 +66,49 @@
       timeout-ms = <50>;
       key-positions = <30 16>;
       bindings = <&kp LGUI>;
-      layers = <ALL>
+      layers = <ALL>;
     };
     combo_LCTRL {
       timeout-ms = <50>;
       key-positions = <30 17>;
       bindings = <&kp LCTRL>;
-      layers = <ALL>
+      layers = <ALL>;
     };
     combo_LALT {
       timeout-ms = <50>;
       key-positions = <30 18>;
       bindings = <&kp LALT>;
-      layers = <ALL>
+      layers = <ALL>;
     };
     combo_LSHIFT {
       timeout-ms = <50>;
       key-positions = <30 17>;
       bindings = <&kp LSHIFT>;
-      layers = <ALL>
+      layers = <ALL>;
     };
     combo_RGUI {
       timeout-ms = <50>;
       key-positions = <30 16>;
       bindings = <&kp RGUI>;
-      layers = <ALL>
+      layers = <ALL>;
     };
     combo_RCTRL {
       timeout-ms = <50>;
       key-positions = <30 17>;
       bindings = <&kp RCTRL>;
-      layers = <ALL>
+      layers = <ALL>;
     };
     combo_RALT {
       timeout-ms = <50>;
       key-positions = <30 18>;
       bindings = <&kp RALT>;
-      layers = <ALL>
+      layers = <ALL>;
     };
     combo_RSHIFT {
       timeout-ms = <50>;
       key-positions = <30 17>;
       bindings = <&kp RSHIFT>;
-      layers = <ALL>
+      layers = <ALL>;
     };
   };
 
