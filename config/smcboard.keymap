@@ -129,7 +129,7 @@
 			bindings = <
 				&kp ESC &none &none &none &none &none &kp ESC &kp TAB &kp DEL &kp BSPC
 				&kp LSHFT &kp LALT &kp LCTRL &kp LGUI &none &kp LEFT &kp UP &kp DOWN &kp RIGHT &kp ENTER
-				&to NAV &none &none &none &none &kp HOME &kp PG_UP &kp PG_DOWN &kp END &none
+				&to NAV &none &none &none &none &kp HOME &kp PG_UP &kp PG_DN &kp END &none
 				&trans &trans &trans &none
 			>;
 		};
