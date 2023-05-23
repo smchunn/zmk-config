@@ -13,10 +13,10 @@
 
 #define MOD_MORPH(NAME, BINDINGS, MODS) \
     NAME: NAME { \
-            compatible = "zmk,behavior-mod-morph"; \
-            label = ZMK_STRINGIFY(MM_ ## NAME); \
-            #binding-cells = <0>; \
-            bindings = UNPACK BINDINGS; \
-            mods = MODS; \
-        };
+        compatible = "zmk,behavior-mod-morph"; \
+        label = MM_##NAME; \
+        #binding-cells = <0>; \
+        bindings = UNPACK BINDINGS; \
+        mods = MODS; \
+    };
 
