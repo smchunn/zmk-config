@@ -11,12 +11,12 @@
         COMBO_QT \
     };
 
-#define MOD_MORPH(NAME, BINDINGS, MODS) UNPACK \
+#define MOD_MORPH(NAME, BINDINGS, MODS) \
     NAME: NAME { \
             compatible = "zmk,behavior-mod-morph"; \
             label = ZMK_STRINGIFY(MM_ ## NAME); \
             #binding-cells = <0>; \
-            bindings = BINDINGS; \
+            bindings = UNPACK BINDINGS; \
             mods = MODS; \
         };
 
