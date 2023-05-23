@@ -84,22 +84,22 @@
     };
     combo_RGUI {
       timeout-ms = <50>;
-      key-positions = <30 16>;
+      key-positions = <30 13>;
       bindings = <&kp RGUI>;
     };
     combo_RCTRL {
       timeout-ms = <50>;
-      key-positions = <30 17>;
+      key-positions = <30 12>;
       bindings = <&kp RCTRL>;
     };
     combo_RALT {
       timeout-ms = <50>;
-      key-positions = <30 18>;
+      key-positions = <30 11>;
       bindings = <&kp RALT>;
     };
     combo_RSHIFT {
       timeout-ms = <50>;
-      key-positions = <30 17>;
+      key-positions = <30 10>;
       bindings = <&kp RSHIFT>;
     };
   };
