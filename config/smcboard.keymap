@@ -92,6 +92,13 @@
 			retro-tap;
 			bindings = <&mo>, <&to>;
 		};
+		// tap: comma | shift + tap: semicolon | ctrl + shift + tap: <
+		MOD_MORPH(comma, (<&kp COMMA>, <&MM_comma_inner>), <(MOD_LSFT|MOD_RSFT)>)
+		MOD_MORPH(comma_inner, (<&kp SEMICOLON>, <&kp LESS_THAN>), <(MOD_LCTL|MOD_RCTL)>)
+
+		// tap: dot | shift + tap: colon | ctrl + shift + tap: >
+		MOD_MORPH(dot, (<&kp DOT>, <&MM_dot_inner>),<(MOD_LSFT|MOD_RSFT)>)
+		MOD_MORPH(dot_inner, (<&kp COLON>, <&kp GREATER_THAN>), <(MOD_LCTL|MOD_RCTL)>)
 	};
 
   combos {

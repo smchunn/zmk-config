@@ -1,3 +1,5 @@
+#define UNPACK( ... ) __VA_ARGS__
+
 #define ZMK_STRINGIFY(x) #x
 
 #define COMBO(NAME, BINDINGS, KEYPOS, LAYERS, MS) \
@@ -9,11 +11,12 @@
         COMBO_QT \
     };
 
-#define MOD_MORPH(NAME, BINDINGS, MODS) \
+#define MOD_MORPH(NAME, BINDINGS, MODS) UNPACK \
     NAME: NAME { \
             compatible = "zmk,behavior-mod-morph"; \
             label = ZMK_STRINGIFY(MM_ ## NAME); \
             #binding-cells = <0>; \
             bindings = BINDINGS; \
-            mods = <(MODS)>; \
+            mods = MODS; \
         };
+
