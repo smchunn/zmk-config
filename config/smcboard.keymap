@@ -13,8 +13,8 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include keypos.h
-#include zmk_utils.h
+#include "keypos.h"
+#include "zmk_utils.h"
 
 #define ALL 0xff
 #define BASE 0
