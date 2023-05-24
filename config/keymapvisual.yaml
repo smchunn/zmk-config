@@ -1,3 +1,5 @@
+# https://github.com/caksoylar/keymap-drawer
+
 layout: {ortho_layout: {split: true, rows: 3, columns: 5, thumbs: 2}}
 layers:
   BASE:
@@ -13,7 +15,7 @@ layers:
   NAV:
     - [ESC, null, null, null, null, null, ESC, TAB, DEL, BSPC]
     - [Shift, Alt, Ctrl, Gui, null, Left, Down, Up, Right, Enter]
-    - [FN, null, null, null, null, Home, PgUp, PgDn, End, null]
+    - [FN, null, null, null, null, Home, PgDN, PgUp, End, null]
     - [null, null, {type: held}, null]
   FUN:
     - [null, "Vol-", "Vol+", F11, null, null, F12, "Bri-", "Bri+", null]
