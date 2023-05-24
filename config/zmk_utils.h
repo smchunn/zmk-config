@@ -3,7 +3,7 @@
 #define ZMK_STRINGIFY(x) #x
 
 #define COMBO(NAME, BINDINGS, KEYPOS, LAYERS, MS) \
-    combo_##NAME { \
+    combo_ ## NAME { \
         bindings = <BINDINGS>; \
         key-positions = <KEYPOS>; \
         timeout-ms = <MS>; \
@@ -14,9 +14,9 @@
 #define MOD_MORPH(NAME, BINDINGS, MODS) \
     NAME: NAME { \
         compatible = "zmk,behavior-mod-morph"; \
-        label = MM_##NAME; \
+        label = MM_ ## NAME; \
         #binding-cells = <0>; \
-        bindings = UNPACK BINDINGS; \
-        mods = UNPACK MODS; \
+        bindings = UNPACK(BINDINGS); \
+        mods = UNPACK(MODS); \
     };
 

@@ -115,7 +115,7 @@
 				
 		default_layer {
 			bindings = <
-  			&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SEMI
+  			&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
 				&hml LSHIFT A &hml LALT R &hml LCTRL S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RCTRL E &hmr RALT I &hmr RSHIFT O
 				&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &kp COMMA &kp DOT &kp SLASH
 				&mt LC(LS(LALT)) SPC &kp LSHIFT &llt NAV BASE &mo SYM
