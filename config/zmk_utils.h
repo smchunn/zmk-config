@@ -16,7 +16,7 @@
         compatible = "zmk,behavior-mod-morph"; \
         label = STRINGIFY(mm_ ## NAME); \
         #binding-cells = <0>; \
-        bindings = UNPACK(BINDINGS); \
-        mods = UNPACK(MODS); \
+        bindings = UNPACK BINDINGS; \
+        mods = UNPACK MODS; \
     };
 
