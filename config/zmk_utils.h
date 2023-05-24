@@ -1,6 +1,6 @@
 #define UNPACK( ... ) __VA_ARGS__
 
-#define ZMK_STRINGIFY(x) #x
+#define STRINGIFY(x) #x
 
 #define COMBO(NAME, BINDINGS, KEYPOS, LAYERS, MS) \
     combo_ ## NAME { \
@@ -12,9 +12,9 @@
     };
 
 #define MOD_MORPH(NAME, BINDINGS, MODS) \
-    NAME: NAME { \
+    mm_ ## NAME: mm_ ## NAME { \
         compatible = "zmk,behavior-mod-morph"; \
-        label = NAME; \
+        label = STRINGIFY(mm_ ## NAME); \
         #binding-cells = <0>; \
         bindings = UNPACK(BINDINGS); \
         mods = UNPACK(MODS); \
