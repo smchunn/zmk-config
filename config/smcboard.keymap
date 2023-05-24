@@ -92,22 +92,35 @@
 			retro-tap;
 			bindings = <&mo>, <&to>;
 		};
-		// tap: comma | shift + tap: semicolon | ctrl + shift + tap: <
-		MOD_MORPH(comma, (<&kp COMMA>, <&mm_comma_inner>), (<(MOD_LSFT|MOD_RSFT)>))
-		MOD_MORPH(comma_inner, (<&kp SEMICOLON>, <&kp LESS_THAN>), (<(MOD_LCTL|MOD_RCTL)>))
+		// tap: comma | shift + tap: semicolon
+		MOD_MORPH(COMMA, (<&kp COMMA>, <&kp SEMI>), (<(MOD_LSFT|MOD_RSFT)>))
 
-		// tap: dot | shift + tap: colon | ctrl + shift + tap: >
-		MOD_MORPH(dot, (<&kp DOT>, <&mm_dot_inner>), (<(MOD_LSFT|MOD_RSFT)>))
-		MOD_MORPH(dot_inner, (<&kp COLON>, <&kp GREATER_THAN>), (<(MOD_LCTL|MOD_RCTL)>))
+		// tap: dot | shift + tap: colon
+		MOD_MORPH(DOT, (<&kp DOT>, <&kp COLON>), (<(MOD_LSFT|MOD_RSFT)>))
+
+		// tap: ( | shift + tap: <
+		MOD_MORPH(LPAR, (<&kp LPAR>, <&kp LT>), (<(MOD_LSFT|MOD_RSFT)>))
+		// tap: ) | shift + tap: >
+		MOD_MORPH(RPAR, (<&kp RPAR>, <&kp GT>), (<(MOD_LSFT|MOD_RSFT)>))
+
+		// tap: { | shift + tap: [
+		MOD_MORPH(LBRC, (<&kp LBRC>, <&kp LBKT>), (<(MOD_LSFT|MOD_RSFT)>))
+		// tap: } | shift + tap: ]
+		MOD_MORPH(RBRC, (<&kp RBRC>, <&kp RBKT>), (<(MOD_LSFT|MOD_RSFT)>))
+
+		// tap: ~ | shift + tap: `
+		MOD_MORPH(TILDE, (<&kp TILDE>, <&kp GRAVE>), (<(MOD_LSFT|MOD_RSFT)>))
+
+		// tap: / | shift + tap: \
+		MOD_MORPH(SLASH, (<&kp FSLH>, <&kp BSLH>), (<(MOD_LSFT|MOD_RSFT)>))
+
 	};
 
   combos {
     compatible = "zmk,combos";
-    COMBO(DEL, &kp DEL, RT2 RT3, ALL, COMBO_FAST)
-    COMBO(BSPC, &kp BSPC, RT1 RT2, ALL, COMBO_FAST)
-    COMBO(ESC, &kp ESC, LT2 LT3, ALL, COMBO_FAST)
     COMBO(TAB, &hml LA(LCTRL) TAB, LM2 LM3, ALL, COMBO_FAST)
-    COMBO(ENTER, &hmr RA(RCTRL) ENTER, RM2 RM3, ALL, COMBO_FAST)
+    COMBO(RESC, &hmr RA(RCTRL) ESC, RM1 RM2, ALL, COMBO_FAST)
+    COMBO(LESC, &hml LA(LCTRL) ESC, LM1 LM2, ALL, COMBO_FAST)
   };
 
 	keymap {
@@ -117,16 +130,16 @@
 			bindings = <
   			&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
 				&hml LSHIFT A &hml LALT R &hml LCTRL S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RCTRL E &hmr RALT I &hmr RSHIFT O
-				&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &kp COMMA &kp DOT &kp SLASH
+				&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
 				&mt LC(LS(LALT)) SPC &kp LSHIFT &llt NAV BASE &mo SYM
 			>;
 		};
 
 		symbol_layer {
 			bindings = <
-        &none &none &none &none &none &none &none &none &none &none
+        &kp QMARK &kp AT &kp HASH &kp DOLLAR &none &kp PIPE &kp PERCENT &kp ASTERISK &kp CARET &kp AMPERSAND
         &hml LSHFT N1 &hml LALT N2 &hml LCTRL N3 &hml LGUI N4 &kp N5 &kp N6 &hmr RGUI N7 &hmr RCTRL N8 &hmr RALT N9 &hmr RSHFT N0
-        &none &none &none &kp TILDE &kp SQT &kp LBKT &kp RBKT &kp MINUS &kp EQUAL &kp BSLH 
+        &kp PLUS &kp EQUAL &mm_LBRC &mm_RBRC &mm_TILDE &kp EXCL &mm_LPAR &mm_RPAR &kp MINUS &kp UNDER
         &trans &trans &trans &trans
         >;
 		};
