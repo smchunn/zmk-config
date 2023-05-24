@@ -17,6 +17,6 @@
         label = MM_##NAME; \
         #binding-cells = <0>; \
         bindings = UNPACK BINDINGS; \
-        mods = MODS; \
+        mods = UNPACK MODS; \
     };
 
