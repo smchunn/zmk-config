@@ -12,7 +12,7 @@
     };
 
 #define MOD_MORPH(NAME, BINDINGS, MODS) \
-    NAME: NAME { \
+    MM_ ## NAME: MM_ ## NAME { \
         compatible = "zmk,behavior-mod-morph"; \
         label = MM_ ## NAME; \
         #binding-cells = <0>; \
