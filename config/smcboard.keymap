@@ -111,7 +111,7 @@
 		// tap: ~ | shift + tap: `
 		MOD_MORPH(TILDE, (<&kp TILDE>, <&kp GRAVE>), (<(MOD_LSFT|MOD_RSFT)>))
 
-		// tap: / | shift + tap: \
+		// tap: / | shift + tap: backslash
 		MOD_MORPH(SLASH, (<&kp FSLH>, <&kp BSLH>), (<(MOD_LSFT|MOD_RSFT)>))
 
 	};
