@@ -27,7 +27,7 @@
 #define THUMBS LH1 LH0 RH0 RH1
 
 #define COMBO_QT global-quick-tap-ms = <150>;
-#define COMBO_FAST 20
+#define COMBO_FAST 35
 #define COMBO_SLOW 35
 
 /*                              34 KEY MATRIX / LAYOUT MAPPING
@@ -119,8 +119,9 @@
   combos {
     compatible = "zmk,combos";
     COMBO(TAB, &hml LA(LCTRL) TAB, LM2 LM3, ALL, COMBO_FAST)
-    COMBO(RESC, &hmr RA(RCTRL) ESC, RM1 RM2, ALL, COMBO_FAST)
-    COMBO(LESC, &hml LA(LCTRL) ESC, LM1 LM2, ALL, COMBO_FAST)
+    COMBO(RESC, &hmr RA(RGUI) ESC, RM1 RM2, ALL, COMBO_FAST)
+    COMBO(LESC, &hml LA(LGUI) ESC, LM1 LM2, ALL, COMBO_FAST)
+    COMBO(ENTER, &hmr RA(RCTRL) ENTER, RM2 RM3, ALL, COMBO_FAST)
   };
 
 	keymap {
@@ -129,7 +130,7 @@
 		default_layer {
 			bindings = <
   			&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
-				&hml LSHIFT A &hml LALT R &hml LCTRL S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RCTRL E &hmr RALT I &hmr RSHIFT O
+				&hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
 				&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
 				&mt LC(LS(LALT)) SPC &kp LSHIFT &llt NAV BASE &mo SYM
 			>;
@@ -138,7 +139,7 @@
 		symbol_layer {
 			bindings = <
         &kp QMARK &kp AT &kp HASH &kp DOLLAR &none &kp PIPE &kp PERCENT &kp ASTERISK &kp CARET &kp AMPERSAND
-        &hml LSHFT N1 &hml LALT N2 &hml LCTRL N3 &hml LGUI N4 &kp N5 &kp N6 &hmr RGUI N7 &hmr RCTRL N8 &hmr RALT N9 &hmr RSHFT N0
+        &hml LSHFT N1 &hml LCTRL N2 &hml LALT N3 &hml LGUI N4 &kp N5 &kp N6 &hmr RGUI N7 &hmr RALT N8 &hmr RCTRL N9 &hmr RSHFT N0
         &kp PLUS &kp EQUAL &mm_LBRC &mm_RBRC &mm_TILDE &kp EXCL &mm_LPAR &mm_RPAR &kp MINUS &kp UNDER
         &trans &trans &trans &trans
         >;
@@ -147,7 +148,7 @@
 		nav_layer {
 			bindings = <
 				&kp ESC &none &none &none &none &none &kp ESC &kp TAB &kp DEL &kp BSPC
-				&kp LSHFT &kp LALT &kp LCTRL &kp LGUI &none &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp ENTER
+				&kp LSHFT &kp LCTRL &kp LALT &kp LGUI &none &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp ENTER
 				&to FN &none &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END &none
 				&trans &trans &trans &none
 			>;
@@ -156,7 +157,7 @@
 		function_layer {
 			bindings = <
 				&none &kp C_VOL_DN &kp C_VOL_UP &kp F11 &none &none &kp F12 &kp C_BRI_DN &kp C_BRI_UP &none
-				&hml LSHFT F1 &hml LALT F2 &hml LCTRL F3 &hml LGUI F4 &kp F5 &kp F6 &hmr RGUI F7 &hmr RCTRL F8 &hmr RALT F9 &hmr RSHFT F10
+				&hml LSHFT F1 &hml LCTRL F2 &hml LALT F3 &hml LGUI F4 &kp F5 &kp F6 &hmr RGUI F7 &hmr RCTRL F8 &hmr RALT F9 &hmr RSHFT F10
 				&none &none &bt BT_PRV &bt BT_NXT &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none &none
 				&trans &trans &trans &trans
 			>;
