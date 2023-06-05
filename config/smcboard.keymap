@@ -73,15 +73,13 @@
 	    hold-trigger-key-positions = <KEYS_L THUMBS>;
 	    hold-trigger-on-release;  
 		};
-		td: tapdance {
-			compatible = "zmk,behavior-hold-tap";
-			label = "TAPDANCE";
-			#binding-cells = <2>;
-			tapping-term-ms = <150>;
-			quick_tap_ms = <0>;
-			flavor = "tap-preferred";
-			bindings = <&kp>, <&kp>;
-		};
+		sptd: sptd   {
+      compatible = "zmk,behavior-tap-dance";
+      label = "SPTD";
+      #binding-cells = <0>;
+      tapping-term-ms = <100>;
+      bindings = <&mt LC(LS(LALT)) SPC>, <&mt LG(LC(LS(LALT))) SPC>;
+    };
 		llt: llt {
 			compatible = "zmk,behavior-hold-tap";
 			label = "LLT";
@@ -132,7 +130,7 @@
   			&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
 				&hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
 				&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
-				&mt LC(LS(LALT)) SPC &kp LSHIFT &llt NAV BASE &mo SYM
+				&sptd &kp LSHIFT &llt NAV BASE &mo SYM
 			>;
 		};
 
