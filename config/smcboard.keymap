@@ -47,7 +47,16 @@
 };
 
 / { 
-
+  macros {
+    spcdt: spcdt{
+      label = "SPCDT";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings
+        = <&macro_tap &kp SPC &kp SPC>
+        ;
+    };
+  };
 	behaviors {
 		hml: hml {
 			compatible = "zmk,behavior-hold-tap";
@@ -73,12 +82,20 @@
 	    hold-trigger-key-positions = <KEYS_L THUMBS>;
 	    hold-trigger-on-release;  
 		};
+    spcdtmt: spcdtmt {
+			compatible = "zmk,behavior-hold-tap";
+			label = "SPCDTMT";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			flavor = "hold-preferred";
+			bindings = <&kp LG(LC(LS(LALT)))>, <&spcdt>;
+    };
 		sptd: sptd   {
       compatible = "zmk,behavior-tap-dance";
       label = "SPTD";
       #binding-cells = <0>;
       tapping-term-ms = <230>;
-      bindings = <&mt LC(LS(LALT)) SPC>, <&mt LG(LC(LS(LALT))) SPC>;
+      bindings = <&mt LC(LS(LALT)) SPC>, <&spcdtmt>;
     };
 		llt: llt {
 			compatible = "zmk,behavior-hold-tap";
