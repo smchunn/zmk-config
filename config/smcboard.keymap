@@ -52,6 +52,8 @@
       label = "SPCDT";
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
+      wait-ms = <40>;
+      tap-ms = <40>;
       bindings
         = <&macro_tap &kp SPC &kp SPC>
         ;
@@ -85,7 +87,7 @@
     spcdtmt: spcdtmt {
 			compatible = "zmk,behavior-hold-tap";
 			label = "SPCDTMT";
-			#binding-cells = <0>;
+			#binding-cells = 2>;
 			tapping-term-ms = <200>;
 			flavor = "hold-preferred";
 			bindings = <&kp LG(LC(LS(LALT)))>, <&spcdt>;
