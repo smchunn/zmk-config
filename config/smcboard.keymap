@@ -77,8 +77,8 @@
       compatible = "zmk,behavior-tap-dance";
       label = "SPTD";
       #binding-cells = <0>;
-      tapping-term-ms = <150>;
-      bindings = <&mt LC(LS(LALT)) SPC>, <&kp LG(LC(LS(LALT)))>;
+      tapping-term-ms = <230>;
+      bindings = <&mt LC(LS(LALT)) SPC>, <&mt LG(LC(LS(LALT))) SPC>;
     };
 		llt: llt {
 			compatible = "zmk,behavior-hold-tap";
