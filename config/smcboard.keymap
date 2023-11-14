@@ -43,69 +43,69 @@
 
 
 &mt {
-	//flavor = "tap-preferred";
-	tapping_term_ms = <200>;
+  //flavor = "tap-preferred";
+  tapping_term_ms = <200>;
 };
 
 / { 
-	behaviors {
-		hml: hml {
-			compatible = "zmk,behavior-hold-tap";
-			label = "HML";
-			#binding-cells = <2>;
-			tapping-term-ms = <280>;
-			quick_tap_ms = <175>;
-    	require-prior-idle-ms = <150>;
-			flavor = "balanced";
-			bindings = <&kp>, <&kp>;
-	    hold-trigger-key-positions = <KEYS_R THUMBS>;
-	    hold-trigger-on-release;  
-		};
-		hmr: hmr {
-			compatible = "zmk,behavior-hold-tap";
-			label = "HMR";
-			#binding-cells = <2>;
-			tapping-term-ms = <280>;
-			quick_tap_ms = <175>;
-    	require-prior-idle-ms = <150>;
-			flavor = "balanced";
-			bindings = <&kp>, <&kp>;
-	    hold-trigger-key-positions = <KEYS_L THUMBS>;
-	    hold-trigger-on-release;  
-		};
-		llt: llt {
-			compatible = "zmk,behavior-hold-tap";
-			label = "LLT";
-			#binding-cells = <2>;
-			tapping-term-ms = <150>;
-			quick_tap_ms = <0>;
-			flavor = "tap-preferred";
-			retro-tap;
-			bindings = <&mo>, <&to>;
-		};
-		// tap: comma | shift + tap: semicolon
-		MOD_MORPH(COMMA, (<&kp COMMA>, <&kp SEMI>), (<(MOD_LSFT|MOD_RSFT)>))
+  behaviors {
+    hml: hml {
+      compatible = "zmk,behavior-hold-tap";
+      label = "HML";
+      #binding-cells = <2>;
+      tapping-term-ms = <280>;
+      quick_tap_ms = <175>;
+      require-prior-idle-ms = <150>;
+      flavor = "balanced";
+      bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <KEYS_R THUMBS>;
+      hold-trigger-on-release;  
+    };
+    hmr: hmr {
+      compatible = "zmk,behavior-hold-tap";
+      label = "HMR";
+      #binding-cells = <2>;
+      tapping-term-ms = <280>;
+      quick_tap_ms = <175>;
+      require-prior-idle-ms = <150>;
+      flavor = "balanced";
+      bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <KEYS_L THUMBS>;
+      hold-trigger-on-release;  
+    };
+    llt: llt {
+      compatible = "zmk,behavior-hold-tap";
+      label = "LLT";
+      #binding-cells = <2>;
+      tapping-term-ms = <150>;
+      quick_tap_ms = <0>;
+      flavor = "tap-preferred";
+      retro-tap;
+      bindings = <&mo>, <&to>;
+    };
+    // tap: comma | shift + tap: semicolon
+    MOD_MORPH(COMMA, (<&kp COMMA>, <&kp SEMI>), (<(MOD_LSFT|MOD_RSFT)>))
 
-		// tap: dot | shift + tap: colon
-		MOD_MORPH(DOT, (<&kp DOT>, <&kp COLON>), (<(MOD_LSFT|MOD_RSFT)>))
+    // tap: dot | shift + tap: colon
+    MOD_MORPH(DOT, (<&kp DOT>, <&kp COLON>), (<(MOD_LSFT|MOD_RSFT)>))
 
-		// tap: ( | shift + tap: <
-		MOD_MORPH(LPAR, (<&kp LPAR>, <&kp LT>), (<(MOD_LSFT|MOD_RSFT)>))
-		// tap: ) | shift + tap: >
-		MOD_MORPH(RPAR, (<&kp RPAR>, <&kp GT>), (<(MOD_LSFT|MOD_RSFT)>))
+    // tap: ( | shift + tap: <
+    MOD_MORPH(LPAR, (<&kp LPAR>, <&kp LT>), (<(MOD_LSFT|MOD_RSFT)>))
+    // tap: ) | shift + tap: >
+    MOD_MORPH(RPAR, (<&kp RPAR>, <&kp GT>), (<(MOD_LSFT|MOD_RSFT)>))
 
-		// tap: { | shift + tap: [
-		MOD_MORPH(LBRC, (<&kp LBRC>, <&kp LBKT>), (<(MOD_LSFT|MOD_RSFT)>))
-		// tap: } | shift + tap: ]
-		MOD_MORPH(RBRC, (<&kp RBRC>, <&kp RBKT>), (<(MOD_LSFT|MOD_RSFT)>))
+    // tap: { | shift + tap: [
+    MOD_MORPH(LBRC, (<&kp LBRC>, <&kp LBKT>), (<(MOD_LSFT|MOD_RSFT)>))
+    // tap: } | shift + tap: ]
+    MOD_MORPH(RBRC, (<&kp RBRC>, <&kp RBKT>), (<(MOD_LSFT|MOD_RSFT)>))
 
-		// tap: ~ | shift + tap: `
-		MOD_MORPH(TILDE, (<&kp TILDE>, <&kp GRAVE>), (<(MOD_LSFT|MOD_RSFT)>))
+    // tap: ~ | shift + tap: `
+    MOD_MORPH(TILDE, (<&kp TILDE>, <&kp GRAVE>), (<(MOD_LSFT|MOD_RSFT)>))
 
-		// tap: / | shift + tap: backslash
-		MOD_MORPH(SLASH, (<&kp FSLH>, <&kp BSLH>), (<(MOD_LSFT|MOD_RSFT)>))
+    // tap: / | shift + tap: backslash
+    MOD_MORPH(SLASH, (<&kp FSLH>, <&kp BSLH>), (<(MOD_LSFT|MOD_RSFT)>))
 
-	};
+  };
 
   combos {
     compatible = "zmk,combos";
@@ -115,54 +115,54 @@
     COMBO(ENTER, &hmr RA(RCTRL) ENTER, RM2 RM3, ALL, COMBO_FAST)
   };
 
-	keymap {
-	  compatible = "zmk,keymap";
-				
-		default_layer {
-			bindings = <
-  			&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
-				&hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
-				&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &kp COMMA &kp DOT &kp SLASH
-				&mt LC(LS(LALT)) SPC &kp LSHIFT &llt NAV BASE &mo SYM
-			>;
-		};
+  keymap {
+    compatible = "zmk,keymap";
+        
+    default_layer {
+      bindings = <
+        &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
+        &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
+        &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &kp COMMA &kp DOT &kp SLASH
+        &mt LC(LS(LALT)) SPC &kp LSHIFT &llt NAV BASE &mo SYM
+      >;
+    };
     
     game_layer {
-			bindings = <
-  			&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
-				&kp A &kp R &kp S &kp T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
-				&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
-				&mt LC(LS(LALT)) SPC &kp LSHIFT &llt NAV BASE &mo SYM
-			>;
-		};
+      bindings = <
+        &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
+        &kp A &kp R &kp S &kp T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
+        &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
+        &mt LC(LS(LALT)) SPC &kp LSHIFT &llt NAV BASE &mo SYM
+      >;
+    };
 
-		symbol_layer {
-			bindings = <
+    symbol_layer {
+      bindings = <
         &kp EXCL &kp AT &kp HASH &kp DOLLAR &none &kp PIPE &kp PERCENT &kp ASTERISK &kp CARET &kp AMPERSAND
         &hml LSHFT N1 &hml LCTRL N2 &hml LALT N3 &hml LGUI N4 &kp N5 &kp N6 &hmr RGUI N7 &hmr RALT N8 &hmr RCTRL N9 &hmr RSHFT N0
         &kp PLUS &kp EQUAL &mm_LBRC &mm_RBRC &mm_TILDE &kp EXCL &mm_LPAR &mm_RPAR &kp MINUS &kp UNDER
         &trans &trans &trans &trans
         >;
-		};
-		
-		nav_layer {
-			bindings = <
-				&kp ESC &none &none &none &none &none &kp ESC &kp TAB &kp DEL &kp BSPC
-				&kp LSHFT &kp LCTRL &kp LALT &kp LGUI &none &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp ENTER
-				&to FN &to GAME &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END &none
-				&trans &trans &trans &none
-			>;
-		};
-		
-		function_layer {
-			bindings = <
-				&none &kp C_VOL_DN &kp C_VOL_UP &kp F11 &none &none &kp F12 &kp C_BRI_DN &kp C_BRI_UP &none
-				&hml LSHFT F1 &hml LCTRL F2 &hml LALT F3 &hml LGUI F4 &kp F5 &kp F6 &hmr RGUI F7 &hmr RCTRL F8 &hmr RALT F9 &hmr RSHFT F10
-				&none &none &bt BT_PRV &bt BT_NXT &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none &none
-				&trans &trans &trans &trans
-			>;
-		};
-		
-	};
+    };
+    
+    nav_layer {
+      bindings = <
+        &kp ESC &none &none &none &none &none &kp ESC &kp TAB &kp DEL &kp BSPC
+        &kp LSHFT &kp LCTRL &kp LALT &kp LGUI &none &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp ENTER
+        &to FN &to GAME &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END &none
+        &trans &trans &trans &none
+      >;
+    };
+    
+    function_layer {
+      bindings = <
+        &none &kp C_VOL_DN &kp C_VOL_UP &kp F11 &none &none &kp F12 &kp C_BRI_DN &kp C_BRI_UP &none
+        &hml LSHFT F1 &hml LCTRL F2 &hml LALT F3 &hml LGUI F4 &kp F5 &kp F6 &hmr RGUI F7 &hmr RCTRL F8 &hmr RALT F9 &hmr RSHFT F10
+        &none &none &bt BT_PRV &bt BT_NXT &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none &none
+        &trans &trans &trans &trans
+      >;
+    };
+    
+  };
 };
 
