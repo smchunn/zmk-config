@@ -125,7 +125,7 @@
       bindings = <
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
-        &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &kp SLASH
+        &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
         &mt LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM
       >;
     };
