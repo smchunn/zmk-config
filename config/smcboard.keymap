@@ -126,7 +126,7 @@
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
         &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &kp SLASH
-        &mt LC(LS(LALT)) SPC &kp LSHIFT &llt NAV BASE &mo SYM
+        &mt LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM
       >;
     };
     
@@ -161,7 +161,7 @@
       bindings = <
         &kp ESC &none &none &none &none &none &kp ESC &kp TAB &kp DEL &kp BSPC
         &kp LSHFT &kp LCTRL &kp LALT &kp LGUI &none &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp ENTER
-        &to FN &to GAME &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END &none
+        &tog FN &tog GAME &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END &none
         &trans &trans &trans &none
       >;
     };
