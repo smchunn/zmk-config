@@ -16,7 +16,7 @@
 #include "keypos.h"
 #include "zmk_utils.h"
 
-#define ALL -1
+#define ALL 0xff
 #define STD 0 2 3 4 
 #define BASE 0
 #define GAME 1
@@ -113,9 +113,9 @@
   combos {
     compatible = "zmk,combos";
     COMBO(TAB, &hml LA(LCTRL) TAB, LM2 LM3, STD, COMBO_FAST)
- //   COMBO(RESC, &hmr RA(RGUI) ESC, RM1 RM2, ALL, COMBO_FAST)
+    COMBO(RESC, &hmr RA(RGUI) ESC, RM1 RM2, ALL, COMBO_FAST)
     COMBO(LESC, &hml LA(LGUI) ESC, LM1 LM2, STD, COMBO_FAST)
- //   COMBO(ENTER, &hmr RA(RCTRL) ENTER, RM2 RM3, ALL, COMBO_FAST)
+    COMBO(ENTER, &hmr RA(RCTRL) ENTER, RM2 RM3, ALL, COMBO_FAST)
   };
 
   keymap {
