@@ -113,8 +113,10 @@
   combos {
     compatible = "zmk,combos";
     COMBO(TAB, &hml LA(LCTRL) TAB, LM2 LM3, STD, COMBO_FAST)
+    COMBO(TAB, &kp TAB, LM2 LM3, GAME, COMBO_FAST)
     COMBO(RESC, &hmr RA(RGUI) ESC, RM1 RM2, ALL, COMBO_FAST)
     COMBO(LESC, &hml LA(LGUI) ESC, LM1 LM2, STD, COMBO_FAST)
+    COMBO(LESC, &kp ESC, LM1 LM2, GAME, COMBO_FAST)
     COMBO(ENTER, &hmr RA(RCTRL) ENTER, RM2 RM3, ALL, COMBO_FAST)
   };
 
@@ -153,7 +155,7 @@
         &bt BT_CLR &kp F1 &kp F2 &kp F3 &none &none &kp F7 &kp F8 &kp F9 &none
         &kp LSHFT &hml LCTRL F4 &hml LALT F5 &hml LGUI F6 &kp C_VOL_UP &kp C_BRI_UP &hmr RGUI F10 &hmr RCTRL F11 &hmr RALT F12 &kp RSHFT
         &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none &kp C_VOL_DN &kp C_BRI_DN &none &none &none &none
-        &trans &trans &tog FN  &trans
+        &trans &trans &tog FN &trans
       >;
     };
     
