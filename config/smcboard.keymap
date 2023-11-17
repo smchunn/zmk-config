@@ -16,7 +16,7 @@
 #include "keypos.h"
 #include "zmk_utils.h"
 
-#define ALL 0xff
+#define ALL -1
 #define STD 0 2 3 4 
 #define BASE 0
 #define GAME 1
