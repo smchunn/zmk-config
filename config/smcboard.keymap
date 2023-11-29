@@ -125,6 +125,9 @@
     COMBO(RESC, &hmr RA(RGUI) ESC, RM1 RM2, ALL, COMBO_FAST)
     // R hand return combo (sends opt + ctl on hold)
     COMBO(ENTER, &hmr RA(RCTRL) ENTER, RM2 RM3, ALL, COMBO_FAST)
+    COMBO(TOG_FN, &tog FN, LM4 LB4, ALL, COMBO_FAST)
+    COMBO(TOG_GAME, &tog GAME, LM3 LB3, ALL, COMBO_FAST)
+    COMBO(TOG_QWRT, &tog QWRT, LM2 LB2, ALL, COMBO_FAST)
   };
 
   keymap {
@@ -179,7 +182,7 @@
       bindings = <
         &kp ESC &none &none &none &none &none &kp ESC &kp TAB &kp DEL &kp BSPC
         &kp LSHFT &kp LCTRL &kp LALT &kp LGUI &none &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp ENTER
-        &tog FN &tog GAME &tog QWRT &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END &none
+        &none &none &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END &none
         &trans &trans &trans &none
       >;
     };
