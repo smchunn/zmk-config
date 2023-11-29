@@ -125,9 +125,9 @@
     COMBO(RESC, &hmr RA(RGUI) ESC, RM1 RM2, ALL, COMBO_FAST)
     // R hand return combo (sends opt + ctl on hold)
     COMBO(ENTER, &hmr RA(RCTRL) ENTER, RM2 RM3, ALL, COMBO_FAST)
-    COMBO(TOG_FN, &tog FN, LM4 LB4, ALL, COMBO_FAST)
-    COMBO(TOG_GAME, &tog GAME, LM3 LB3, ALL, COMBO_FAST)
-    COMBO(TOG_QWRT, &tog QWRT, LM2 LB2, ALL, COMBO_FAST)
+    COMBO(TOG_FN, &tog FN, LM1 LB1, ALL, COMBO_FAST)
+    COMBO(TOG_GAME, &tog GAME, LM2 LB2, ALL, COMBO_FAST)
+    COMBO(TOG_QWRT, &tog QWRT, LM3 LB3, ALL, COMBO_FAST)
   };
 
   keymap {
