@@ -165,7 +165,7 @@
         &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P
         &hml LSHIFT A &hml LCTRL S &hml LALT D &hml LGUI F &kp G &kp H &hmr RGUI J &hmr RALT K &hmr RCTRL L &hmr RSHIFT SQT
         &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &mm_COMMA &mm_DOT &mm_SLASH
-        &meh_spc &kp LSHIFT &mo NAV &mo SYM
+        &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM
       >;
     };
 
@@ -180,9 +180,9 @@
 
     function_layer {
       bindings = <
-        &bt BT_CLR      &kp F1          &kp F2          &kp F3          &tog QWRT       &tog GAME       &kp F7          &kp F8          &kp F9          &bt BT_CLR_ALL
+        &bt BT_CLR      &kp F1          &kp F2          &kp F3          &none       &none       &kp F7          &kp F8          &kp F9          &bt BT_CLR_ALL
         &kp LSHFT       &hml LCTRL F4   &hml LALT F5    &hml LGUI F6    &kp C_VOL_UP    &kp C_BRI_UP    &hmr RGUI F10   &hmr RCTRL F11  &hmr RALT F12   &kp RSHFT
-        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_NXT      &kp C_VOL_DN    &kp C_BRI_DN    &none           &none           &none           &none
+        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_NXT      &kp C_VOL_DN    &kp C_BRI_DN    &to BASE        &to QWRT        &to GAME           &none
                                                         &trans          &trans          &tog FN         &trans
       >;
     };
