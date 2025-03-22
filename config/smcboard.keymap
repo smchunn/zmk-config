@@ -85,7 +85,8 @@
       quick_tap_ms = <175>;
       require-prior-idle-ms = <150>;
       flavor = "balanced";
-      bindings = <&kp>, <&kp>;
+      // bindings = <&kp>, <&kp>;
+      bindings = <&kp LC(LS(LALT))>, <&kp SPC>;
     };
     llt: llt {
       compatible = "zmk,behavior-hold-tap";
@@ -125,19 +126,18 @@
     compatible = "zmk,combos";
     // L hand tab combo (sends opt + ctl on hold)
     COMBO(TAB, &hml LA(LCTRL) TAB, LM2 LM3, STD, COMBO_FAST)
-    // L hand tab combo on game layer only (does not send opt + ctl on hold)
-    COMBO(TAB_G, &kp TAB, LM2 LM3, GAME, COMBO_FAST)
+    // L hand tab combo on game layer only 
+    COMBO(TAB_G, &kp TAB, LM3 LM4, GAME, COMBO_FAST)
     // L hand esc combo (sends opt + cmd on hold)
     COMBO(LESC, &hml LA(LGUI) ESC, LM1 LM2, STD, COMBO_FAST)
     // L hand esc combo on game layer only (does not send opt + ctl on hold)
-    COMBO(LESC_G, &kp ESC, LM1 LM2, GAME, COMBO_FAST)
+    // COMBO(LESC_G, &kp ESC, LM1 LM2, GAME, COMBO_FAST)
     // R hand esc combo (sends opt + cmd on hold)
     COMBO(RESC, &hmr RA(RGUI) ESC, RM1 RM2, ALL, COMBO_FAST)
     // R hand return combo (sends opt + ctl on hold)
     COMBO(ENTER, &hmr RA(RCTRL) ENTER, RM2 RM3, ALL, COMBO_FAST)
-    COMBO(TOG_FN, &tog FN, LM1 LB1, ALL, COMBO_FAST)
-    COMBO(TOG_GAME, &tog GAME, LM2 LB2, ALL, COMBO_FAST)
-    COMBO(TOG_QWRT, &tog QWRT, LM3 LB3, ALL, COMBO_FAST)
+    // change to FN layer
+    COMBO(TOG_FN, &tog FN, LH0 LM1 LM0, ALL, COMBO_FAST)
   };
 
   keymap {
@@ -148,16 +148,17 @@
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
         &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
-        &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM
+        // &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM
+        &meh_spc &kp LSHIFT &mo NAV &mo SYM
       >;
     };
 
     game_layer {
       bindings = <
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-        &kp A &kp R &kp S &kp T &kp G &trans &trans &trans &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-        &trans &trans &mo NAV &trans
+        &kp Q &kp E &kp W &kp R &kp T &kp Y &kp U &kp I &kp O &kp P
+        &hml LCTRL F &kp A &kp S &kp D&kp G &kp H &hmr RGUI J &hmr RALT K &hmr RCTRL L &hmr RSHIFT SQT
+        &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &mm_COMMA &mm_DOT &mm_SLASH
+        &kp SPACE &kp LSHIFT &mo NAV &mo SYM
       >;
     };
 
@@ -166,34 +167,34 @@
         &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P
         &hml LSHIFT A &hml LCTRL S &hml LALT D &hml LGUI F &kp G &kp H &hmr RGUI J &hmr RALT K &hmr RCTRL L &hmr RSHIFT SQT
         &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &mm_COMMA &mm_DOT &mm_SLASH
-        &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM
+        &meh_spc &kp LSHIFT &mo NAV &mo SYM
       >;
     };
 
     symbol_layer {
       bindings = <
-        &kp EXCL &kp AT &kp HASH &kp DOLLAR &kp PERCENT &kp CARET &kp AMPERSAND &kp ASTERISK &kp PIPE &kp QMARK
-        &hml LSHFT N1 &hml LCTRL N2 &hml LALT N3 &hml LGUI N4 &kp N5 &kp N6 &hmr RGUI N7 &hmr RALT N8 &hmr RCTRL N9 &hmr RSHFT N0
-        &kp PLUS &kp EQUAL &mm_LBRC &mm_RBRC &mm_TILDE &kp EXCL &mm_LPAR &mm_RPAR &kp MINUS &kp UNDER
-        &trans &trans &trans &trans
-        >;
+        &kp EXCL        &kp AT          &kp HASH        &kp DOLLAR      &kp PERCENT     &kp CARET       &kp AMPERSAND   &kp ASTERISK    &kp PIPE        &kp QMARK
+        &hml LSHFT N1   &hml LCTRL N2   &hml LALT N3    &hml LGUI N4    &kp N5          &kp N6          &hmr RGUI N7    &hmr RALT N8    &hmr RCTRL N9   &hmr RSHFT N0
+        &kp PLUS        &kp EQUAL       &mm_LBRC        &mm_RBRC        &mm_TILDE       &kp EXCL        &mm_LPAR        &mm_RPAR        &kp MINUS       &kp UNDER
+                                                        &trans          &trans          &trans          &trans
+      >;
     };
 
     function_layer {
       bindings = <
-        &bt BT_CLR &kp F1 &kp F2 &kp F3 &none &none &kp F7 &kp F8 &kp F9 &bt BT_CLR_ALL
-        &kp LSHFT &hml LCTRL F4 &hml LALT F5 &hml LGUI F6 &kp C_VOL_UP &kp C_BRI_UP &hmr RGUI F10 &hmr RCTRL F11 &hmr RALT F12 &kp RSHFT
-        &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_NXT &kp C_VOL_DN &kp C_BRI_DN &none &none &none &none
-        &trans &trans &tog FN &trans
+        &bt BT_CLR      &kp F1          &kp F2          &kp F3          &tog QWRT       &tog GAME       &kp F7          &kp F8          &kp F9          &bt BT_CLR_ALL
+        &kp LSHFT       &hml LCTRL F4   &hml LALT F5    &hml LGUI F6    &kp C_VOL_UP    &kp C_BRI_UP    &hmr RGUI F10   &hmr RCTRL F11  &hmr RALT F12   &kp RSHFT
+        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_NXT      &kp C_VOL_DN    &kp C_BRI_DN    &none           &none           &none           &none
+                                                        &trans          &trans          &tog FN         &trans
       >;
     };
 
     nav_layer {
       bindings = <
-        &kp ESC &none &none &none &none &none &kp ESC &kp TAB &kp DEL &kp BSPC
-        &kp LSHFT &kp LCTRL &kp LALT &kp LGUI &none &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp ENTER
-        &none &none &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END &none
-        &trans &trans &trans &none
+        &kp ESC         &none           &none           &none           &none           &none           &kp ESC         &kp TAB         &kp DEL         &kp BSPC
+        &kp LSHFT       &kp LCTRL       &kp LALT        &kp LGUI        &none           &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &kp ENTER
+        &none           &none           &none           &none           &none           &kp HOME        &kp PG_DN       &kp PG_UP       &kp END         &none
+                                                        &trans          &trans          &trans          &none
       >;
     };
 
