@@ -130,7 +130,7 @@
     // L hand esc combo (sends opt + cmd on hold)
     COMBO(LESC, &hml LA(LGUI) ESC, LM1 LM2, STD, COMBO_FAST)
     // L hand esc combo on game layer only (does not send opt + ctl on hold)
-    // COMBO(LESC_G, &kp ESC, LM1 LM2, GAME, COMBO_FAST)
+    COMBO(LESC_G, &kp ESC, LB1 LB2, GAME, COMBO_FAST)
     // R hand esc combo (sends opt + cmd on hold)
     COMBO(RESC, &hmr RA(RGUI) ESC, RM1 RM2, ALL, COMBO_FAST)
     // R hand return combo (sends opt + ctl on hold)
