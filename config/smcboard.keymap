@@ -126,7 +126,7 @@
     // L hand tab combo (sends opt + ctl on hold)
     COMBO(TAB, &hml LA(LCTRL) TAB, LM2 LM3, STD, COMBO_FAST)
     // L hand tab combo on game layer only 
-    COMBO(TAB_G, &kp TAB, LM3 LM4, GAME, COMBO_FAST)
+    COMBO(TAB_G, &kp TAB, LB2 LB3, GAME, COMBO_FAST)
     // L hand esc combo (sends opt + cmd on hold)
     COMBO(LESC, &hml LA(LGUI) ESC, LM1 LM2, STD, COMBO_FAST)
     // L hand esc combo on game layer only (does not send opt + ctl on hold)
