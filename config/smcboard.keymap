@@ -96,7 +96,7 @@
       quick_tap_ms = <0>;
       flavor = "tap-preferred";
       retro-tap;
-      bindings = <&mo>, <&to>;
+      bindings = <&mo>, <&tog>;
     };
     // tap: comma | shift + tap: semicolon
     MOD_MORPH(COMMA, (<&kp COMMA>, <&kp SEMI>), (<(MOD_LSFT|MOD_RSFT)>))
@@ -157,7 +157,7 @@
         &kp Q &kp E &kp W &kp R &kp T &kp Y &kp U &kp I &kp O &kp P
         &hml LALT F &kp A &kp S &kp D&kp G &kp H &hmr RGUI J &hmr RALT K &hmr RCTRL L &hmr RSHIFT SQT
         &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &mm_COMMA &mm_DOT &mm_SLASH
-        &kp SPACE &kp LSHIFT &tog GTYP &mo SYM
+        &kp SPACE &kp LSHIFT &llt NAV GTYP &mo SYM
       >;
     };
     
@@ -166,7 +166,7 @@
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
         &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
-        &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &tog GTYP &mo SYM
+        &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &llt NAV GTYP &mo SYM
       >;
     };
 
