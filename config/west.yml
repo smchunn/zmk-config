@@ -2,12 +2,18 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: urob
-      url-base: https://github.com/urob
+    - name: smchunn
+      url-base: https://github.com/smchunn
+
   projects:
     - name: zmk
-      remote: urob
-      revision: main
+      remote: zmkfirmware
       import: app/west.yml
+      revision: main
+
+    - name: zmk-keyboards-smcboard40
+      remote: smchunn
+      revision: main
+
   self:
     path: config
