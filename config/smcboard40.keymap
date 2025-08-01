@@ -115,18 +115,19 @@
     compatible = "zmk,combos";
     // L hand tab combo (sends opt + ctl on hold)
     COMBO(TAB, &hml LA(LCTRL) TAB, LM2 LM3, STD, COMBO_FAST)
-    // L hand tab combo on game layer only
-    COMBO(TAB_G, &kp TAB, LB2 LB3, GAME, COMBO_FAST)
     // L hand esc combo (sends opt + cmd on hold)
     COMBO(LESC, &hml LA(LGUI) ESC, LM1 LM2, STD, COMBO_FAST)
-    // L hand esc combo on game layer only (does not send opt + ctl on hold)
-    COMBO(LESC_G, &kp ESC, LB1 LB2, GAME, COMBO_FAST)
+
+    // GAME:
+    COMBO(LESC_G, &kp ESC, LT4 LT3, GAME, COMBO_FAST)
+    COMBO(TAB_G, &kp TAB, LB4 LB3, GAME, COMBO_FAST)
     // L hand enter combo
-    COMBO(LENTER, &kp ENTER, LB1 LB2, STD, COMBO_FAST)
+    COMBO(LENTER, &kp ENTER, LB1 LB2, STD GAME, COMBO_FAST)
+
+    // RST & BOOT
     COMBO(C_RST, &sys_reset, LT2 LT3, FN, COMBO_FAST)
     COMBO(C_BOOT, &bootloader, LT4 LT3, FN, COMBO_FAST)
-    // R hand esc combo (sends opt + cmd on hold)
-    COMBO(RESC, &hmr RA(RGUI) ESC, RM1 RM2, ALL, COMBO_FAST)
+
     // R hand return combo (sends opt + ctl on hold)
     COMBO(ENTER, &hmr RA(RCTRL) ENTER, RM2 RM3, ALL, COMBO_FAST)
   };
