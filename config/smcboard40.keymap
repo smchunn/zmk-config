@@ -134,7 +134,7 @@
   keymap {
     compatible = "zmk,keymap";
 
-    cm_dh_layer {
+    colemak_dh_layer {
       bindings = <
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
@@ -148,7 +148,7 @@
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &kp A &kp R &kp S &kp T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
         &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
-        &none &trans &trans &kp SPC &kp LSHIFT &mo NAV &mo SYM &trans &trans &none
+        &kp LCTRL &kp LALT &kp LGUI &kp SPC &kp LSHIFT &mo NAV &mo SYM &trans &trans &none
       >;
     };
 
