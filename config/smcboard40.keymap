@@ -87,6 +87,14 @@
       retro-tap;
       bindings = <&mo>, <&tog>;
     };
+    skq: sticky_key_quick_release {
+      compatible = "zmk,behavior-sticky-key";
+      #binding-cells = <1>;
+      bindings = <&kp>;
+      release-after-ms = <1000>;
+      quick-release;
+      ignore-modifiers;
+    };
     // tap: comma | shift + tap: semicolon
     MOD_MORPH(COMMA, (<&kp COMMA>, <&kp SEMI>), (<(MOD_LSFT|MOD_RSFT)>))
 
@@ -173,8 +181,8 @@
 
     function_layer {
       bindings = <
-        &kp F11 &kp F12 &none &none &none &none &none &to BASE &to QWRT &to GAME
-        &hml LSHFT F1 &hml LCTRL F2 &hml LALT F3 &hml LGUI F4 &kp F5 &kp F6 &hmr RGUI F7 &hmr RCTRL F8 &hmr RALT F9 &hml RSHFT F10
+        &skq F11 &skq F12 &none &none &none &none &none &to BASE &to QWRT &to GAME
+        &skq F1 &skq F2 &skq F3 &skq F4 &skq F5 &skq F6 &skq F7 &skq F8 &skq F9 &skq F10
         &kp C_BRI_DN &kp C_BRI_UP &kp C_VOL_DN &kp C_VOL_UP &none &none &none
         &none &trans &trans &trans &trans &trans &trans &trans &trans &none
       >;
