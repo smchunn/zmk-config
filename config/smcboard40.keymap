@@ -11,13 +11,14 @@
 #include "zmk_utils.h"
 
 #define ALL 0xff
-#define STD 0 2 3 4 5
+#define STD 0 2 3 4 5 6
 #define BASE 0
 #define GAME 1
 #define QWRT 2
 #define SYM  3
 #define FN   4
-#define NAV  5
+#define FNOS 5
+#define NAV  6
 
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
@@ -77,16 +78,6 @@
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
     };
-    llt: llt {
-      compatible = "zmk,behavior-hold-tap";
-      label = "LLT";
-      #binding-cells = <2>;
-      tapping-term-ms = <150>;
-      quick_tap_ms = <0>;
-      flavor = "tap-preferred";
-      retro-tap;
-      bindings = <&mo>, <&tog>;
-    };
     skq: sticky_key_quick_release {
       compatible = "zmk,behavior-sticky-key";
       #binding-cells = <1>;
@@ -94,6 +85,12 @@
       release-after-ms = <1000>;
       quick-release;
       ignore-modifiers;
+    };
+    ltd: ltd {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <2>;
+      tapping-term-ms = <200>;
+      bindings = <&mo>, <&mo>;
     };
     // tap: comma | shift + tap: semicolon
     MOD_MORPH(COMMA, (<&kp COMMA>, <&kp SEMI>), (<(MOD_LSFT|MOD_RSFT)>))
@@ -148,7 +145,7 @@
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
         &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
-        &none &trans &trans &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &mo FN
+        &none &trans &trans &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &ltd FN FNOS &none
       >;
     };
 
@@ -181,9 +178,18 @@
 
     function_layer {
       bindings = <
-        &skq F11 &skq F12 &none &none &none &none &none &to BASE &to QWRT &to GAME
-        &skq F1 &skq F2 &skq F3 &skq F4 &skq F5 &skq F6 &skq F7 &skq F8 &skq F9 &skq F10
+        &kp F11 &kp F12 &none &none &none &none &none &to BASE &to QWRT &to GAME
+        &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
         &kp C_BRI_DN &kp C_BRI_UP &kp C_VOL_DN &kp C_VOL_UP &none &none &none
+        &none &trans &trans &trans &trans &trans &trans &trans &trans &none
+      >;
+    };
+
+    function_osm_layer {
+      bindings = <
+        &skq F11 &skq F12 &none &none &none &none &none &none &none &none
+        &skq F1 &skq F2 &skq F3 &skq F4 &skq F5 &skq F6 &skq F7 &skq F8 &skq F9 &skq F10
+        &none &none &none &none &none &none &none
         &none &trans &trans &trans &trans &trans &trans &trans &trans &none
       >;
     };
