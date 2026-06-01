@@ -9,7 +9,11 @@ manifest:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
-      revision: main
+      # Pinned to the last release before ZMK main moved to Zephyr 4.1 (2025-12-09),
+      # which dropped the boards/arm layout + arm/rpi_pico/rp2040.dtsi that the
+      # smcboard40 board and nice_nano_v2 shields depend on. Bump only after the
+      # board is migrated to the Zephyr 4.1 hardware-model v2 layout.
+      revision: v0.3.0
 
     - name: zmk-keyboards-smcboard40
       remote: smchunn
