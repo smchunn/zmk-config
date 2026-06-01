@@ -19,6 +19,7 @@
 #define FN   4
 #define FNOS 5
 #define NAV  6
+#define WM   7
 
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
@@ -142,7 +143,7 @@
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
         &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
-        &none &trans &trans &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &fntd &none
+        &none &trans &mo WM &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &kp RA(SPACE) &fntd &none
       >;
     };
 
@@ -160,7 +161,7 @@
         &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P
         &hml LSHIFT A &hml LCTRL S &hml LALT D &hml LGUI F &kp G &kp H &hmr RGUI J &hmr RALT K &hmr RCTRL L &hmr RSHIFT SQT
         &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &mm_COMMA &mm_DOT &mm_SLASH
-        &none &trans &trans &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &trans &trans &none
+        &none &trans &mo WM &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &kp RA(SPACE) &trans &none
       >;
     };
 
@@ -197,6 +198,21 @@
        &kp LSHFT &kp LCTRL &kp LALT &kp LGUI &none &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp ENTER
        &none &none &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END &none
        &none &trans &trans &trans &trans &trans &none &trans &trans &none
+      >;
+    };
+
+    // Window-management layer (hold LH2). Each key emits the exact macOS
+    // modifier+key chord that skhd/yabai listens for; hjkl kept (h=W j=S k=N l=E).
+    //   L hand: top = move-window->space 1-5,  home = focus-space 1-5,
+    //           bottom = float / fullscreen / zoom-parent / split / focus-prev-win
+    //   R hand: top = move/warp hjkl (+ move->next-space),
+    //           home = focus hjkl (+ focus-next-win),  bottom = resize hjkl (+ balance)
+    wm_layer {
+      bindings = <
+        &kp LC(RA(N1)) &kp LC(RA(N2)) &kp LC(RA(N3)) &kp LC(RA(N4)) &kp LC(RA(N5)) &kp LC(LA(H)) &kp LC(LA(J)) &kp LC(LA(K)) &kp LC(LA(L)) &kp LC(LA(N))
+        &kp RA(N1) &kp RA(N2) &kp RA(N3) &kp RA(N4) &kp RA(N5) &kp LA(H) &kp LA(J) &kp LA(K) &kp LA(L) &kp LA(N)
+        &kp RA(SPACE) &kp LC(RA(F)) &kp RA(F) &kp LC(RA(S)) &kp LA(E) &kp LG(LA(H)) &kp LG(LA(J)) &kp LG(LA(K)) &kp LG(LA(L)) &kp LG(LA(E))
+        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
       >;
     };
 
