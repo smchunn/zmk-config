@@ -19,19 +19,30 @@
 #define FN   4
 #define FNOS 5
 #define NAV  6
-#define WM   7
-#define APP  8
-#define WM2  9
+#define WIN   7
+#define SPACE 8
 
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
 #define THUMBS LH4 LH3 LH2 LH1 LH0 RH0 RH1 RH2 RH3 RH4
-// app-launcher cluster (left ring/middle/index); positional-hold trigger for lt_app
-#define APP_KEYS LM3 LM2 LM1 LB3 LB2
-// Hyper = Cmd+Ctrl+Shift+Alt ("navigate" plane); collision-free namespace for skhd
-#define HYP(k) LG(LC(LS(LA(k))))
-// Meh = Ctrl+Shift+Alt ("manipulate" plane); also exactly what the physical MEH thumb sends
-#define MEH(k) LC(LS(LA(k)))
+// positions carrying actions on the SPACE layer; positional-hold trigger for lt_space
+#define SPACE_KEYS LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2
+
+// ── Obscured chord namespace ───────────────────────────────────────────────
+// F13-F20 are unmapped by macOS/apps, so any modifier combo on them is collision-free.
+// Convention: MODIFIER COMBO = the family/verb, F-KEY = the object.
+//   F13/F14/F15/F16 = West/South/North/East (or Left/Down/Up/Right);  F13..F17 = 1..5
+#define FOCUS(k)  LC(LA(k))          // ctrl+alt            focus window
+#define MOVE(k)   LC(LG(k))          // ctrl+cmd            move window
+#define RESIZE(k) LA(LG(k))          // alt+cmd             resize window
+#define STACK(k)  LS(LC(k))          // shift+ctrl          stack-add
+#define INSERT(k) LS(LA(k))          // shift+alt           insertion point
+#define FSPACE(k) LS(LG(k))          // shift+cmd           focus space
+#define MSPACE(k) LC(LA(LG(k)))      // ctrl+alt+cmd        move window to space
+#define WTOG(k)   LS(LC(LA(k)))      // ctrl+shift+alt      window toggles / cycle
+#define WMISC(k)  LS(LC(LG(k)))      // cmd+ctrl+shift      stack-nav / insert-stack / new-window
+#define APPK(k)   LS(LA(LG(k)))      // cmd+shift+alt       app focus
+#define SMISC(k)  LG(LC(LS(LA(k))))  // cmd+ctrl+shift+alt  space-level extras
 
 #define COMBO_QT require-prior-idle-ms = <150>;
 #define COMBO_FAST 35
@@ -84,8 +95,8 @@
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
     };
-    // layer hold-tap for the app-launcher (tap = key, hold = APP layer), tuned like the HRMs
-    lt_app: lt_app {
+    // layer hold-tap for the SPACE layer (tap = key, hold = SPACE), tuned like the HRMs
+    lt_space: lt_space {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
       tapping-term-ms = <200>;
@@ -93,7 +104,7 @@
       require-prior-idle-ms = <150>;
       flavor = "balanced";
       bindings = <&mo>, <&kp>;
-      hold-trigger-key-positions = <APP_KEYS>;
+      hold-trigger-key-positions = <SPACE_KEYS>;
     };
     skq: sticky_key_quick_release {
       compatible = "zmk,behavior-sticky-key";
@@ -161,8 +172,8 @@
       bindings = <
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
-        &lt_app APP Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
-        &none &trans &mo WM &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &kp RA(SPACE) &fntd &none
+        &lt_space SPACE Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
+        &kp F23 &trans &mo WIN &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &fntd &none
       >;
     };
 
@@ -179,8 +190,8 @@
       bindings = <
         &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P
         &hml LSHIFT A &hml LCTRL S &hml LALT D &hml LGUI F &kp G &kp H &hmr RGUI J &hmr RALT K &hmr RCTRL L &hmr RSHIFT SQT
-        &lt_app APP Z &kp X &kp C &kp V &kp B &kp N &kp M &mm_COMMA &mm_DOT &mm_SLASH
-        &none &trans &mo WM &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &kp RA(SPACE) &trans &none
+        &lt_space SPACE Z &kp X &kp C &kp V &kp B &kp N &kp M &mm_COMMA &mm_DOT &mm_SLASH
+        &none &trans &mo WIN &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &trans &none
       >;
     };
 
@@ -220,44 +231,29 @@
       >;
     };
 
-    // WM control panel - page 1 (hold LH2). Obscured namespace: HYP=navigate, MEH=manipulate.
-    //   L hand: top = move->space 1-5,  home = focus-space 1-5,
-    //           bottom = float / fullscreen / zoom-parent / split / focus-prev-win
-    //   R hand: top = move hjkl (+ move->next-space),  home = focus hjkl (+ focus-next-win),
-    //           bottom = resize (arrows L/D/U/R) (+ balance)
-    //   thumbs: RH0 = hold -> page 2 (WM2);  RH1 = move->prev-space
-    wm_layer {
+    // WINDOW MANAGEMENT (hold LH2). Per-window ops + apps. F13/14/15/16 = W/S/N/E.
+    //   L top  = stack-add W/S/N/E (+ stack-prev)      R top  = move W/S/N/E (+ cycle-prev)
+    //   L home = apps kitty/safari/chatgpt/mail/cal    R home = focus W/S/N/E (+ cycle-next)
+    //   L bot  = float/fullscreen/zoom + new-win h/v   R bot  = resize L/D/U/R (+ split)
+    //   thumbs (R hand free): RH0-3 = insert W/S/N/E, RH4 = stack-next, LH1 = insert-stack
+    win_layer {
       bindings = <
-        &kp MEH(N1) &kp MEH(N2) &kp MEH(N3) &kp MEH(N4) &kp MEH(N5) &kp MEH(H) &kp MEH(J) &kp MEH(K) &kp MEH(L) &kp MEH(N)
-        &kp HYP(N1) &kp HYP(N2) &kp HYP(N3) &kp HYP(N4) &kp HYP(N5) &kp HYP(H) &kp HYP(J) &kp HYP(K) &kp HYP(L) &kp HYP(N)
-        &kp HYP(SPACE) &kp HYP(F) &kp HYP(Z) &kp MEH(S) &kp HYP(P) &kp MEH(LEFT) &kp MEH(DOWN) &kp MEH(UP) &kp MEH(RIGHT) &kp MEH(B)
-        &trans &trans &trans &trans &trans &mo WM2 &kp MEH(P) &trans &trans &trans
+        &kp STACK(F13) &kp STACK(F14) &kp STACK(F15) &kp STACK(F16) &kp WMISC(F13) &kp MOVE(F13) &kp MOVE(F14) &kp MOVE(F15) &kp MOVE(F16) &kp WTOG(F17)
+        &kp APPK(F13) &kp APPK(F14) &kp APPK(F15) &kp APPK(F16) &kp APPK(F17) &kp FOCUS(F13) &kp FOCUS(F14) &kp FOCUS(F15) &kp FOCUS(F16) &kp WTOG(F18)
+        &kp WTOG(F13) &kp WTOG(F14) &kp WTOG(F15) &kp WMISC(F16) &kp WMISC(F17) &kp RESIZE(F13) &kp RESIZE(F14) &kp RESIZE(F15) &kp RESIZE(F16) &kp WTOG(F16)
+        &trans &trans &trans &kp WMISC(F15) &trans &kp INSERT(F13) &kp INSERT(F14) &kp INSERT(F15) &kp INSERT(F16) &kp WMISC(F14)
       >;
     };
 
-    // App-focus layer (hold LB4 = left pinky). Positional left-hand cluster; each key
-    // emits Hyper+<letter> (deduped from the focus keys), routed by skhd to focus-app.sh.
-    //   home row:   LM3=kitty(T)  LM2=safari(B)  LM1=chatgpt(A)   (ring/middle/index)
-    //   bottom row: LB3=mail(M)   LB2=calendar(C)                 (ring/middle)
-    app_layer {
+    // SPACE MANAGEMENT (hold LB4). Space/display/layout ops. F13..F17 = space 1-5.
+    //   L top  = move window -> space 1-5     L home = focus space 1-5
+    //   R home = move-prev-space / move-next-space / mirror-x / mirror-y / gaps
+    //   R bot  = balance / restart-yabai / restart-skhd
+    space_layer {
       bindings = <
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-        &trans &kp HYP(T) &kp HYP(B) &kp HYP(A) &trans &trans &trans &trans &trans &trans
-        &trans &kp HYP(M) &kp HYP(C) &trans &trans &trans &trans &trans &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-      >;
-    };
-
-    // WM control panel - page 2 (hold LH2 + RH0). Advanced MEH actions:
-    //   R top  = stacks add (Y/U/I/O = W/S/N/E)
-    //   R home = insert point (F13/F14/F15/F16 = W/S/N/E) + insert-stack (F17)
-    //   R bot  = stack-prev([) stack-next(]) mirror-x(X) mirror-y(V) gaps(G)
-    //   L home = new-window east(,) / south(.)    L bot = restart yabai(F19) / skhd(F20)
-    wm2_layer {
-      bindings = <
-        &trans &trans &trans &trans &trans &kp MEH(Y) &kp MEH(U) &kp MEH(I) &kp MEH(O) &trans
-        &trans &trans &trans &kp MEH(COMMA) &kp MEH(DOT) &kp MEH(F13) &kp MEH(F14) &kp MEH(F15) &kp MEH(F16) &kp MEH(F17)
-        &trans &trans &trans &kp MEH(F19) &kp MEH(F20) &kp MEH(LBKT) &kp MEH(RBKT) &kp MEH(X) &kp MEH(V) &kp MEH(G)
+        &kp MSPACE(F13) &kp MSPACE(F14) &kp MSPACE(F15) &kp MSPACE(F16) &kp MSPACE(F17) &trans &trans &trans &trans &trans
+        &kp FSPACE(F13) &kp FSPACE(F14) &kp FSPACE(F15) &kp FSPACE(F16) &kp FSPACE(F17) &kp SMISC(F13) &kp SMISC(F14) &kp SMISC(F15) &kp SMISC(F16) &kp SMISC(F17)
+        &trans &trans &trans &trans &trans &kp SMISC(F18) &kp SMISC(F19) &kp SMISC(F20) &trans &trans
         &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
       >;
     };
