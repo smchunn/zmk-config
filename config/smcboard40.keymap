@@ -19,8 +19,8 @@
 #define FN   4
 #define FNOS 5
 #define NAV  6
-#define WIN   7
-#define SPACE 8
+#define WIN    7
+#define SPACES 8
 
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
@@ -36,7 +36,7 @@
 #define MOVE(k)   LC(LG(k))          // ctrl+cmd            move window
 #define RESIZE(k) LA(LG(k))          // alt+cmd             resize window
 #define STACK(k)  LS(LC(k))          // shift+ctrl          stack-add
-#define INSERT(k) LS(LA(k))          // shift+alt           insertion point
+#define INSRT(k) LS(LA(k))          // shift+alt           insertion point
 #define FSPACE(k) LS(LG(k))          // shift+cmd           focus space
 #define MSPACE(k) LC(LA(LG(k)))      // ctrl+alt+cmd        move window to space
 #define WTOG(k)   LS(LC(LA(k)))      // ctrl+shift+alt      window toggles / cycle
@@ -172,8 +172,8 @@
       bindings = <
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
-        &lt_space SPACE Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
-        &kp F23 &trans &mo WIN &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &fntd &none
+        &lt_space SPACES Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
+        &none &trans &mo WIN &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &fntd &none
       >;
     };
 
@@ -190,7 +190,7 @@
       bindings = <
         &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P
         &hml LSHIFT A &hml LCTRL S &hml LALT D &hml LGUI F &kp G &kp H &hmr RGUI J &hmr RALT K &hmr RCTRL L &hmr RSHIFT SQT
-        &lt_space SPACE Z &kp X &kp C &kp V &kp B &kp N &kp M &mm_COMMA &mm_DOT &mm_SLASH
+        &lt_space SPACES Z &kp X &kp C &kp V &kp B &kp N &kp M &mm_COMMA &mm_DOT &mm_SLASH
         &none &trans &mo WIN &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &trans &none
       >;
     };
@@ -241,7 +241,7 @@
         &kp STACK(F13) &kp STACK(F14) &kp STACK(F15) &kp STACK(F16) &kp WMISC(F13) &kp MOVE(F13) &kp MOVE(F14) &kp MOVE(F15) &kp MOVE(F16) &kp WTOG(F17)
         &kp APPK(F13) &kp APPK(F14) &kp APPK(F15) &kp APPK(F16) &kp APPK(F17) &kp FOCUS(F13) &kp FOCUS(F14) &kp FOCUS(F15) &kp FOCUS(F16) &kp WTOG(F18)
         &kp WTOG(F13) &kp WTOG(F14) &kp WTOG(F15) &kp WMISC(F16) &kp WMISC(F17) &kp RESIZE(F13) &kp RESIZE(F14) &kp RESIZE(F15) &kp RESIZE(F16) &kp WTOG(F16)
-        &trans &trans &trans &kp WMISC(F15) &trans &kp INSERT(F13) &kp INSERT(F14) &kp INSERT(F15) &kp INSERT(F16) &kp WMISC(F14)
+        &trans &trans &trans &kp WMISC(F15) &trans &kp INSRT(F13) &kp INSRT(F14) &kp INSRT(F15) &kp INSRT(F16) &kp WMISC(F14)
       >;
     };
 
