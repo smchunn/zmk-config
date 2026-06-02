@@ -247,11 +247,12 @@
 
     // SPACE MANAGEMENT (hold LB4). Space/display/layout ops. F13..F17 = space 1-5.
     //   L top  = move window -> space 1-5     L home = focus space 1-5
+    //   RT0    = toggle space layout bsp<->stack (the "mode" the WIN keys follow)
     //   R home = move-prev-space / move-next-space / mirror-x / mirror-y / gaps
     //   R bot  = balance / restart-yabai / restart-skhd
     space_layer {
       bindings = <
-        &kp MSPACE(F13) &kp MSPACE(F14) &kp MSPACE(F15) &kp MSPACE(F16) &kp MSPACE(F17) &trans &trans &trans &trans &trans
+        &kp MSPACE(F13) &kp MSPACE(F14) &kp MSPACE(F15) &kp MSPACE(F16) &kp MSPACE(F17) &kp WTOG(F19) &trans &trans &trans &trans
         &kp FSPACE(F13) &kp FSPACE(F14) &kp FSPACE(F15) &kp FSPACE(F16) &kp FSPACE(F17) &kp SMISC(F13) &kp SMISC(F14) &kp SMISC(F15) &kp SMISC(F16) &kp SMISC(F17)
         &trans &trans &trans &trans &trans &kp SMISC(F18) &kp SMISC(F19) &kp SMISC(F20) &trans &trans
         &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
