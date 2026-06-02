@@ -21,14 +21,17 @@
 #define NAV  6
 #define WM   7
 #define APP  8
+#define WM2  9
 
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
 #define THUMBS LH4 LH3 LH2 LH1 LH0 RH0 RH1 RH2 RH3 RH4
 // app-launcher cluster (left ring/middle/index); positional-hold trigger for lt_app
 #define APP_KEYS LM3 LM2 LM1 LB3 LB2
-// Hyper = Cmd+Ctrl+Shift+Alt; tags app-focus chords for skhd (no app-shortcut collisions)
+// Hyper = Cmd+Ctrl+Shift+Alt ("navigate" plane); collision-free namespace for skhd
 #define HYP(k) LG(LC(LS(LA(k))))
+// Meh = Ctrl+Shift+Alt ("manipulate" plane); also exactly what the physical MEH thumb sends
+#define MEH(k) LC(LS(LA(k)))
 
 #define COMBO_QT require-prior-idle-ms = <150>;
 #define COMBO_FAST 35
@@ -217,30 +220,44 @@
       >;
     };
 
-    // Window-management layer (hold LH2). Each key emits the exact macOS
-    // modifier+key chord that skhd/yabai listens for; hjkl kept (h=W j=S k=N l=E).
-    //   L hand: top = move-window->space 1-5,  home = focus-space 1-5,
+    // WM control panel - page 1 (hold LH2). Obscured namespace: HYP=navigate, MEH=manipulate.
+    //   L hand: top = move->space 1-5,  home = focus-space 1-5,
     //           bottom = float / fullscreen / zoom-parent / split / focus-prev-win
-    //   R hand: top = move/warp hjkl (+ move->next-space),
-    //           home = focus hjkl (+ focus-next-win),  bottom = resize hjkl (+ balance)
+    //   R hand: top = move hjkl (+ move->next-space),  home = focus hjkl (+ focus-next-win),
+    //           bottom = resize (arrows L/D/U/R) (+ balance)
+    //   thumbs: RH0 = hold -> page 2 (WM2);  RH1 = move->prev-space
     wm_layer {
       bindings = <
-        &kp LC(RA(N1)) &kp LC(RA(N2)) &kp LC(RA(N3)) &kp LC(RA(N4)) &kp LC(RA(N5)) &kp LC(LA(H)) &kp LC(LA(J)) &kp LC(LA(K)) &kp LC(LA(L)) &kp LC(LA(N))
-        &kp RA(N1) &kp RA(N2) &kp RA(N3) &kp RA(N4) &kp RA(N5) &kp LA(H) &kp LA(J) &kp LA(K) &kp LA(L) &kp LA(N)
-        &kp RA(SPACE) &kp LC(RA(F)) &kp RA(F) &kp LC(RA(S)) &kp LA(E) &kp LG(LA(H)) &kp LG(LA(J)) &kp LG(LA(K)) &kp LG(LA(L)) &kp LG(LA(E))
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+        &kp MEH(N1) &kp MEH(N2) &kp MEH(N3) &kp MEH(N4) &kp MEH(N5) &kp MEH(H) &kp MEH(J) &kp MEH(K) &kp MEH(L) &kp MEH(N)
+        &kp HYP(N1) &kp HYP(N2) &kp HYP(N3) &kp HYP(N4) &kp HYP(N5) &kp HYP(H) &kp HYP(J) &kp HYP(K) &kp HYP(L) &kp HYP(N)
+        &kp HYP(SPACE) &kp HYP(F) &kp HYP(Z) &kp MEH(S) &kp HYP(P) &kp MEH(LEFT) &kp MEH(DOWN) &kp MEH(UP) &kp MEH(RIGHT) &kp MEH(B)
+        &trans &trans &trans &trans &trans &mo WM2 &kp MEH(P) &trans &trans &trans
       >;
     };
 
     // App-focus layer (hold LB4 = left pinky). Positional left-hand cluster; each key
-    // emits Hyper+<letter>, which skhd routes to ~/.config/skhd/scripts/focus-app.sh.
-    //   home row:   LM3=kitty  LM2=safari  LM1=chatgpt   (ring/middle/index)
-    //   bottom row: LB3=mail   LB2=calendar              (ring/middle)
+    // emits Hyper+<letter> (deduped from the focus keys), routed by skhd to focus-app.sh.
+    //   home row:   LM3=kitty(T)  LM2=safari(B)  LM1=chatgpt(A)   (ring/middle/index)
+    //   bottom row: LB3=mail(M)   LB2=calendar(C)                 (ring/middle)
     app_layer {
       bindings = <
         &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-        &trans &kp HYP(K) &kp HYP(S) &kp HYP(G) &trans &trans &trans &trans &trans &trans
+        &trans &kp HYP(T) &kp HYP(B) &kp HYP(A) &trans &trans &trans &trans &trans &trans
         &trans &kp HYP(M) &kp HYP(C) &trans &trans &trans &trans &trans &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+      >;
+    };
+
+    // WM control panel - page 2 (hold LH2 + RH0). Advanced MEH actions:
+    //   R top  = stacks add (Y/U/I/O = W/S/N/E)
+    //   R home = insert point (F13/F14/F15/F16 = W/S/N/E) + insert-stack (F17)
+    //   R bot  = stack-prev([) stack-next(]) mirror-x(X) mirror-y(V) gaps(G)
+    //   L home = new-window east(,) / south(.)    L bot = restart yabai(F19) / skhd(F20)
+    wm2_layer {
+      bindings = <
+        &trans &trans &trans &trans &trans &kp MEH(Y) &kp MEH(U) &kp MEH(I) &kp MEH(O) &trans
+        &trans &trans &trans &kp MEH(COMMA) &kp MEH(DOT) &kp MEH(F13) &kp MEH(F14) &kp MEH(F15) &kp MEH(F16) &kp MEH(F17)
+        &trans &trans &trans &kp MEH(F19) &kp MEH(F20) &kp MEH(LBKT) &kp MEH(RBKT) &kp MEH(X) &kp MEH(V) &kp MEH(G)
         &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
       >;
     };
