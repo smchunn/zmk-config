@@ -1,8 +1,8 @@
 # https://github.com/caksoylar/keymap-drawer
 # Hand-maintained visual of config/smcboard40.keymap (4x10 ortho, 40 keys).
 # Render at https://keymap-drawer.streamlit.app or: keymap draw config/keymapvisual.yaml > keymap.svg
-# WIN/SPACE labels describe the action; the underlying chords are F13-F20 under a
-# per-family modifier combo (see the keymap header). Keep in sync with the keymap.
+# WM/WMOS labels describe the action; the underlying chords are F13-F20 (F16-F20 = WM,
+# F13-F15 = WMOS) under a positional modifier scheme (see the keymap header). Keep in sync.
 
 layout: {ortho_layout: {split: true, rows: 4, columns: 5}}
 
@@ -10,8 +10,8 @@ layers:
   BASE:                # Colemak-DH
     - [Q, W, F, P, B, J, L, U, Y, "'"]
     - [{h: Shift, t: A}, {h: Ctrl, t: R}, {h: Alt, t: S}, {h: Gui, t: T}, G, M, {h: Gui, t: N}, {h: Alt, t: E}, {h: Ctrl, t: I}, {h: Shift, t: O}]
-    - [{h: SPACE, t: Z}, X, C, D, V, K, H, {t: ",", s: ";"}, {t: ".", s: ":"}, {t: "/", s: "\\"}]
-    - [null, "▽", WIN, {h: Meh, t: Spc}, Shift, NAV, SYM, null, FN, null]
+    - [Z, X, C, D, V, K, H, {t: ",", s: ";"}, {t: ".", s: ":"}, {t: "/", s: "\\"}]
+    - [null, {h: WM, t: WMOS}, null, {h: Meh, t: Spc}, Shift, NAV, SYM, null, FN, null]
   GAME:
     - [Q, W, F, P, B, J, L, U, Y, "'"]
     - [A, R, S, T, G, M, {h: Gui, t: N}, {h: Alt, t: E}, {h: Ctrl, t: I}, {h: Shift, t: O}]
@@ -20,8 +20,8 @@ layers:
   QWRT:
     - [Q, W, E, R, T, Y, U, I, O, P]
     - [{h: Shift, t: A}, {h: Ctrl, t: S}, {h: Alt, t: D}, {h: Gui, t: F}, G, H, {h: Gui, t: J}, {h: Alt, t: K}, {h: Ctrl, t: L}, {h: Shift, t: "'"}]
-    - [{h: SPACE, t: Z}, X, C, V, B, N, M, {t: ",", s: ";"}, {t: ".", s: ":"}, {t: "/", s: "\\"}]
-    - [null, "▽", WIN, {h: Meh, t: Spc}, Shift, NAV, SYM, null, "▽", null]
+    - [Z, X, C, V, B, N, M, {t: ",", s: ";"}, {t: ".", s: ":"}, {t: "/", s: "\\"}]
+    - [null, {h: WM, t: WMOS}, null, {h: Meh, t: Spc}, Shift, NAV, SYM, null, "▽", null]
   SYM:
     - ["!", "@", "#", "$", "%", "^", "&", "*", "|", "?"]
     - [{h: Shift, t: "1"}, {h: Ctrl, t: "2"}, {h: Alt, t: "3"}, {h: Gui, t: "4"}, "5", "6", {h: Gui, t: "7"}, {h: Alt, t: "8"}, {h: Ctrl, t: "9"}, {h: Shift, t: "0"}]
@@ -42,16 +42,16 @@ layers:
     - [Shift, Ctrl, Alt, Gui, null, "←", "↓", "↑", "→", Enter]
     - [null, null, null, null, null, Home, PgDn, PgUp, End, null]
     - [null, "▽", "▽", "▽", "▽", {type: held}, null, "▽", "▽", null]
-  WIN:                 # hold LH2 — window management + apps
-    - ["stk ←", "stk ↓", "stk ↑", "stk →", "stk prev", "move ←", "move ↓", "move ↑", "move →", "win prev"]
-    - [kitty, safari, chatgpt, mail, cal, "focus ←", "focus ↓", "focus ↑", "focus →", "win next"]
-    - [float, full, zoom, "new |", "new —", "size ←", "size ↓", "size ↑", "size →", split]
-    - ["▽", "▽", {type: held}, "ins stk", "▽", "ins ←", "ins ↓", "ins ↑", "ins →", "stk next"]
-  SPACE:               # hold LB4 — space / display / layout
-    - ["→ sp1", "→ sp2", "→ sp3", "→ sp4", "→ sp5", "bsp/stk", "▽", "▽", "▽", "▽"]
-    - ["sp 1", "sp 2", "sp 3", "sp 4", "sp 5", "win←sp", "win→sp", "mirror x", "mirror y", gaps]
-    - [{type: held}, "▽", "▽", "▽", "▽", balance, "rst yabai", "rst skhd", "▽", "▽"]
-    - ["▽", "▽", "▽", "▽", "▽", "▽", "▽", "▽", "▽", "▽"]
+  WM:                  # hold LH3 — windows + apps + spaces (F16-F20)
+    - [cal, mail, chatgpt, safari, kitty, "w +", "w -", "h +", "h -", "rot 90"]
+    - ["sp 5", "sp 4", "sp 3", "sp 2", "sp 1", "sp prev", "sp next", "▽", "▽", "▽"]
+    - [balance, "swp prev", "swp next", "foc prev", "foc next", "▽", "▽", "▽", "▽", "▽"]
+    - [null, {type: held}, "▽", "▽", "▽", "▽", "▽", "▽", "▽", null]
+  WMOS:                # tap LH3 — one-shot window ops (F13-F15, left cluster)
+    - ["zoom par", "bsp/stk", split, full, float, "▽", "▽", "▽", "▽", "▽"]
+    - ["→sp 5", "→sp 4", "→sp 3", "→sp 2", "→sp 1", "▽", "▽", "▽", "▽", "▽"]
+    - ["rst skhd", "rst yabai", balance, "mir y", "mir x", "▽", "▽", "▽", "▽", "▽"]
+    - [null, {type: held}, "▽", "▽", "▽", "▽", "▽", "▽", "▽", null]
 
 combos:
   - {p: [11, 12], k: TAB, l: [BASE, QWRT]}

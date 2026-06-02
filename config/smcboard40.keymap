@@ -19,30 +19,27 @@
 #define FN   4
 #define FNOS 5
 #define NAV  6
-#define WIN    7
-#define SPACES 8
+#define WM   7
+#define WMOS 8
 
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
 #define THUMBS LH4 LH3 LH2 LH1 LH0 RH0 RH1 RH2 RH3 RH4
-// positions carrying actions on the SPACE layer; positional-hold trigger for lt_space
-#define SPACE_KEYS LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2
 
-// ── Obscured chord namespace ───────────────────────────────────────────────
+// ── Positional WM/WMOS chord namespace ─────────────────────────────────────
 // F13-F20 are unmapped by macOS/apps, so any modifier combo on them is collision-free.
-// Convention: MODIFIER COMBO = the family/verb, F-KEY = the object.
-//   F13/F14/F15/F16 = West/South/North/East (or Left/Down/Up/Right);  F13..F17 = 1..5
-#define FOCUS(k)  LC(LA(k))          // ctrl+alt            focus window
-#define MOVE(k)   LC(LG(k))          // ctrl+cmd            move window
-#define RESIZE(k) LA(LG(k))          // alt+cmd             resize window
-#define STACK(k)  LS(LC(k))          // shift+ctrl          stack-add
-#define INSRT(k) LS(LA(k))          // shift+alt           insertion point
-#define FSPACE(k) LS(LG(k))          // shift+cmd           focus space
-#define MSPACE(k) LC(LA(LG(k)))      // ctrl+alt+cmd        move window to space
-#define WTOG(k)   LS(LC(LA(k)))      // ctrl+shift+alt      window toggles / cycle
-#define WMISC(k)  LS(LC(LG(k)))      // cmd+ctrl+shift      stack-nav / insert-stack / new-window
-#define APPK(k)   LS(LA(LG(k)))      // cmd+shift+alt       app focus
-#define SMISC(k)  LG(LC(LS(LA(k))))  // cmd+ctrl+shift+alt  space-level extras
+// The chord reads as (row, hand/column, layer):
+//   LAYER  : F16-F20 => WM (held)   ·   F13-F15 => WMOS (one-shot)
+//   ROW    : ctrl = top · alt = home · ctrl+alt = bottom
+//   HAND   : shift = right hand (WM) / 6th-column overflow (WMOS)
+//   COLUMN : the F-key (finger), index->pinky
+// cmd is unused/reserved; nothing exceeds 3 modifiers.
+#define TOP(k)    LC(k)            // top    row, left  / unshifted
+#define TOPR(k)   LS(LC(k))        // top    row, right / shifted
+#define HOME(k)   LA(k)            // home   row, left  / unshifted
+#define HOMER(k)  LS(LA(k))        // home   row, right / shifted
+#define BOT(k)    LC(LA(k))        // bottom row, left  / unshifted
+#define BOTR(k)   LS(LC(LA(k)))    // bottom row, right / shifted
 
 #define COMBO_QT require-prior-idle-ms = <150>;
 #define COMBO_FAST 35
@@ -95,16 +92,14 @@
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
     };
-    // layer hold-tap for the SPACE layer (tap = key, hold = SPACE), tuned like the HRMs
-    lt_space: lt_space {
+    // LH3 combined activator: hold = WM (momentary), tap = WMOS (one-shot layer)
+    wmt: wmt {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
       tapping-term-ms = <200>;
       quick-tap-ms = <175>;
-      require-prior-idle-ms = <150>;
-      flavor = "balanced";
-      bindings = <&mo>, <&kp>;
-      hold-trigger-key-positions = <SPACE_KEYS>;
+      flavor = "tap-preferred";
+      bindings = <&mo>, <&sl>;
     };
     skq: sticky_key_quick_release {
       compatible = "zmk,behavior-sticky-key";
@@ -172,8 +167,8 @@
       bindings = <
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
-        &lt_space SPACES Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
-        &none &trans &mo WIN &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &fntd &none
+        &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
+        &none &wmt WM WMOS &none &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &fntd &none
       >;
     };
 
@@ -190,8 +185,8 @@
       bindings = <
         &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P
         &hml LSHIFT A &hml LCTRL S &hml LALT D &hml LGUI F &kp G &kp H &hmr RGUI J &hmr RALT K &hmr RCTRL L &hmr RSHIFT SQT
-        &lt_space SPACES Z &kp X &kp C &kp V &kp B &kp N &kp M &mm_COMMA &mm_DOT &mm_SLASH
-        &none &trans &mo WIN &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &trans &none
+        &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &mm_COMMA &mm_DOT &mm_SLASH
+        &none &wmt WM WMOS &none &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &trans &none
       >;
     };
 
@@ -231,31 +226,32 @@
       >;
     };
 
-    // WINDOW MANAGEMENT (hold LH2). Per-window ops + apps. F13/14/15/16 = W/S/N/E.
-    //   L top  = stack-add W/S/N/E (+ stack-prev)      R top  = move W/S/N/E (+ cycle-prev)
-    //   L home = apps kitty/safari/chatgpt/mail/cal    R home = focus W/S/N/E (+ cycle-next)
-    //   L bot  = float/fullscreen/zoom + new-win h/v   R bot  = resize L/D/U/R (+ split)
-    //   thumbs (R hand free): RH0-3 = insert W/S/N/E, RH4 = stack-next, LH1 = insert-stack
-    win_layer {
+    // WM — window management (HOLD LH3), repeatable. F16-F20 = column (index->pinky).
+    //   L top  ctrl       apps: kitty safari chatgpt mail calendar
+    //   L home alt        go-to-space 1-5
+    //   L bot  ctrl+alt   focus-next/prev · swap-next/prev · balance
+    //   R top  ctrl+shift resize grow-W/shrink-W/grow-H/shrink-H · rotate90
+    //   R home alt+shift  space prev/next
+    wm_layer {
       bindings = <
-        &kp STACK(F13) &kp STACK(F14) &kp STACK(F15) &kp STACK(F16) &kp WMISC(F13) &kp MOVE(F13) &kp MOVE(F14) &kp MOVE(F15) &kp MOVE(F16) &kp WTOG(F17)
-        &kp APPK(F13) &kp APPK(F14) &kp APPK(F15) &kp APPK(F16) &kp APPK(F17) &kp FOCUS(F13) &kp FOCUS(F14) &kp FOCUS(F15) &kp FOCUS(F16) &kp WTOG(F18)
-        &kp WTOG(F13) &kp WTOG(F14) &kp WTOG(F15) &kp WMISC(F16) &kp WMISC(F17) &kp RESIZE(F13) &kp RESIZE(F14) &kp RESIZE(F15) &kp RESIZE(F16) &kp WTOG(F16)
-        &trans &trans &trans &kp WMISC(F15) &trans &kp INSRT(F13) &kp INSRT(F14) &kp INSRT(F15) &kp INSRT(F16) &kp WMISC(F14)
+        &kp TOP(F20) &kp TOP(F19) &kp TOP(F18) &kp TOP(F17) &kp TOP(F16) &kp TOPR(F16) &kp TOPR(F17) &kp TOPR(F18) &kp TOPR(F19) &kp TOPR(F20)
+        &kp HOME(F20) &kp HOME(F19) &kp HOME(F18) &kp HOME(F17) &kp HOME(F16) &kp HOMER(F16) &kp HOMER(F17) &trans &trans &trans
+        &kp BOT(F20) &kp BOT(F19) &kp BOT(F18) &kp BOT(F17) &kp BOT(F16) &trans &trans &trans &trans &trans
+        &none &trans &trans &trans &trans &trans &trans &trans &trans &none
       >;
     };
 
-    // SPACE MANAGEMENT (hold LB4). Space/display/layout ops. F13..F17 = space 1-5.
-    //   L top  = move window -> space 1-5     L home = focus space 1-5
-    //   RT0    = toggle space layout bsp<->stack (the "mode" the WIN keys follow)
-    //   R home = move-prev-space / move-next-space / mirror-x / mirror-y / gaps
-    //   R bot  = balance / restart-yabai / restart-skhd
-    space_layer {
+    // WMOS — one-shot window ops (TAP LH3), left-hand cluster. F13-F15 = column.
+    //   top  ctrl       float fullscreen split | bsp/stack zoom-parent
+    //   home alt        send-window-to-space 1-5
+    //   bot  ctrl+alt   mirror-x mirror-y balance | restart-yabai restart-skhd
+    //   shift = the 4th/5th column (and the reserved 6th on the right index)
+    wmos_layer {
       bindings = <
-        &kp MSPACE(F13) &kp MSPACE(F14) &kp MSPACE(F15) &kp MSPACE(F16) &kp MSPACE(F17) &kp WTOG(F19) &trans &trans &trans &trans
-        &kp FSPACE(F13) &kp FSPACE(F14) &kp FSPACE(F15) &kp FSPACE(F16) &kp FSPACE(F17) &kp SMISC(F13) &kp SMISC(F14) &kp SMISC(F15) &kp SMISC(F16) &kp SMISC(F17)
-        &trans &trans &trans &trans &trans &kp SMISC(F18) &kp SMISC(F19) &kp SMISC(F20) &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+        &kp TOPR(F14) &kp TOPR(F13) &kp TOP(F15) &kp TOP(F14) &kp TOP(F13) &trans &trans &trans &trans &trans
+        &kp HOMER(F14) &kp HOMER(F13) &kp HOME(F15) &kp HOME(F14) &kp HOME(F13) &trans &trans &trans &trans &trans
+        &kp BOTR(F14) &kp BOTR(F13) &kp BOT(F15) &kp BOT(F14) &kp BOT(F13) &trans &trans &trans &trans &trans
+        &none &trans &trans &trans &trans &trans &trans &trans &trans &none
       >;
     };
 
