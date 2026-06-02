@@ -36,8 +36,8 @@
 // cmd is unused/reserved; nothing exceeds 3 modifiers.
 #define TOP(k)    LC(k)            // top    row, left  / unshifted
 #define TOPR(k)   LS(LC(k))        // top    row, right / shifted
-#define HOME(k)   LA(k)            // home   row, left  / unshifted
-#define HOMER(k)  LS(LA(k))        // home   row, right / shifted
+#define MID(k)    LA(k)            // home/mid row, left  / unshifted  (MID not HOME: HOME is a keycode)
+#define MIDR(k)   LS(LA(k))        // home/mid row, right / shifted
 #define BOT(k)    LC(LA(k))        // bottom row, left  / unshifted
 #define BOTR(k)   LS(LC(LA(k)))    // bottom row, right / shifted
 
@@ -235,7 +235,7 @@
     wm_layer {
       bindings = <
         &kp TOP(F20) &kp TOP(F19) &kp TOP(F18) &kp TOP(F17) &kp TOP(F16) &kp TOPR(F16) &kp TOPR(F17) &kp TOPR(F18) &kp TOPR(F19) &kp TOPR(F20)
-        &kp HOME(F20) &kp HOME(F19) &kp HOME(F18) &kp HOME(F17) &kp HOME(F16) &kp HOMER(F16) &kp HOMER(F17) &trans &trans &trans
+        &kp MID(F20) &kp MID(F19) &kp MID(F18) &kp MID(F17) &kp MID(F16) &kp MIDR(F16) &kp MIDR(F17) &trans &trans &trans
         &kp BOT(F20) &kp BOT(F19) &kp BOT(F18) &kp BOT(F17) &kp BOT(F16) &trans &trans &trans &trans &trans
         &none &trans &trans &trans &trans &trans &trans &trans &trans &none
       >;
@@ -249,7 +249,7 @@
     wmos_layer {
       bindings = <
         &kp TOPR(F14) &kp TOPR(F13) &kp TOP(F15) &kp TOP(F14) &kp TOP(F13) &trans &trans &trans &trans &trans
-        &kp HOMER(F14) &kp HOMER(F13) &kp HOME(F15) &kp HOME(F14) &kp HOME(F13) &trans &trans &trans &trans &trans
+        &kp MIDR(F14) &kp MIDR(F13) &kp MID(F15) &kp MID(F14) &kp MID(F13) &trans &trans &trans &trans &trans
         &kp BOTR(F14) &kp BOTR(F13) &kp BOT(F15) &kp BOT(F14) &kp BOT(F13) &trans &trans &trans &trans &trans
         &none &trans &trans &trans &trans &trans &trans &trans &trans &none
       >;
