@@ -164,7 +164,7 @@
         &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SQT
         &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G &kp M &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHIFT O
         &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &mm_COMMA &mm_DOT &mm_SLASH
-        &none &trans &none &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &fntd &none
+        &kp TOPR(F16) &kp F15 &kp LG(F17) &meh_spc LC(LS(LALT)) SPC &kp LSHIFT &mo NAV &mo SYM &none &fntd &none
       >;
     };
 
@@ -226,12 +226,12 @@
     //   L top  ctrl        send-window-to-space 1-5
     //   L home alt         go-to-space 1-5
     //   L bot  ctrl+alt    balance · swap-prev · swap-next · focus-prev · focus-next
-    //   R top  ctrl+shift  float fullscreen zoom-parent split bsp/stack
+    //   R top  ctrl+shift  split bsp/stack  (float/fullscreen/zoom-parent moved to BASE thumbs)
     //   R home alt+shift   mirror-x mirror-y rotate-90
     //   R bot  ctrl+alt+sh restart-yabai restart-skhd
     wm_layer {
       bindings = <
-        &kp TOP(F16) &kp TOP(F17) &kp TOP(F18) &kp TOP(F19) &kp TOP(F20) &kp TOPR(F16) &kp TOPR(F17) &kp TOPR(F18) &kp TOPR(F19) &kp TOPR(F20)
+        &kp TOP(F16) &kp TOP(F17) &kp TOP(F18) &kp TOP(F19) &kp TOP(F20) &trans &trans &trans &kp TOPR(F19) &kp TOPR(F20)
         &kp MID(F16) &kp MID(F17) &kp MID(F18) &kp MID(F19) &kp MID(F20) &kp MIDR(F16) &kp MIDR(F17) &kp MIDR(F18) &trans &trans
         &kp BOT(F20) &kp BOT(F19) &kp BOT(F18) &kp BOT(F17) &kp BOT(F16) &kp BOTR(F16) &kp BOTR(F17) &trans &trans &trans
         &none &trans &trans &trans &trans &trans &trans &trans &trans &none

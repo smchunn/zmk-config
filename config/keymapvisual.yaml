@@ -13,7 +13,7 @@ layers:
     - [Q, W, F, P, B, J, L, U, Y, "'"]
     - [{h: Shift, t: A}, {h: Ctrl, t: R}, {h: Alt, t: S}, {h: Gui, t: T}, G, M, {h: Gui, t: N}, {h: Alt, t: E}, {h: Ctrl, t: I}, {h: Shift, t: O}]
     - [Z, X, C, D, V, K, H, {t: ",", s: ";"}, {t: ".", s: ":"}, {t: "/", s: "\\"}]
-    - [null, "▽", null, {h: Meh, t: Spc}, Shift, NAV, SYM, null, FN, null]
+    - [float, apps, {t: full, s: "z par"}, {h: Meh, t: Spc}, Shift, NAV, SYM, null, FN, null]
   GAME:
     - [Q, W, F, P, B, J, L, U, Y, "'"]
     - [A, R, S, T, G, M, {h: Gui, t: N}, {h: Alt, t: E}, {h: Ctrl, t: I}, {h: Shift, t: O}]
@@ -45,7 +45,7 @@ layers:
     - [null, null, null, null, null, Home, PgDn, PgUp, End, null]
     - [null, "▽", "▽", "▽", "▽", {type: held}, null, "▽", "▽", null]
   WM:                  # hold LH0+RH0 combo — one window-mgmt layer (F16-F20)
-    - ["→sp 1", "→sp 2", "→sp 3", "→sp 4", "→sp 5", float, full, "zoom par", split, "bsp/stk"]
+    - ["→sp 1", "→sp 2", "→sp 3", "→sp 4", "→sp 5", "▽", "▽", "▽", split, "bsp/stk"]
     - ["sp 1", "sp 2", "sp 3", "sp 4", "sp 5", "mir x", "mir y", "rot 90", "▽", "▽"]
     - [balance, "swp prev", "swp next", "foc prev", "foc next", "rst yabai", "rst skhd", "▽", "▽", "▽"]
     - [null, "▽", "▽", "▽", {type: held}, {type: held}, "▽", "▽", "▽", null]
