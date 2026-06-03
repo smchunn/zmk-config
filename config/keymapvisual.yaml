@@ -1,6 +1,7 @@
 # https://github.com/caksoylar/keymap-drawer
 # Hand-maintained visual of config/smcboard40.keymap (4x10 ortho, 40 keys).
-# Render at https://keymap-drawer.streamlit.app or: keymap draw config/keymapvisual.yaml > keymap.svg
+# Render locally: uvx --from keymap-drawer keymap draw config/keymapvisual.yaml > config/keymap.svg
+# (or paste into https://keymap-drawer.streamlit.app)
 # WM labels describe the action; the underlying chords are F16-F20 under a positional
 # modifier scheme. WM is one layer held via the LH0+RH0 combo; space prev/next are the
 # LT3+LT2 / LT2+LT1 combos (F13/F14). Keep in sync with the keymap header.
