@@ -1,8 +1,9 @@
 # https://github.com/caksoylar/keymap-drawer
 # Hand-maintained visual of config/smcboard40.keymap (4x10 ortho, 40 keys).
 # Render at https://keymap-drawer.streamlit.app or: keymap draw config/keymapvisual.yaml > keymap.svg
-# WM/WMOS labels describe the action; the underlying chords are F13-F20 (F16-F20 = WM,
-# F13-F15 = WMOS) under a positional modifier scheme (see the keymap header). Keep in sync.
+# WM labels describe the action; the underlying chords are F16-F20 under a positional
+# modifier scheme. WM is one layer held via the LH0+RH0 combo; space prev/next are the
+# LT3+LT2 / LT2+LT1 combos (F13/F14). Keep in sync with the keymap header.
 
 layout: {ortho_layout: {split: true, rows: 4, columns: 5}}
 
@@ -11,7 +12,7 @@ layers:
     - [Q, W, F, P, B, J, L, U, Y, "'"]
     - [{h: Shift, t: A}, {h: Ctrl, t: R}, {h: Alt, t: S}, {h: Gui, t: T}, G, M, {h: Gui, t: N}, {h: Alt, t: E}, {h: Ctrl, t: I}, {h: Shift, t: O}]
     - [Z, X, C, D, V, K, H, {t: ",", s: ";"}, {t: ".", s: ":"}, {t: "/", s: "\\"}]
-    - [null, {h: WM, t: WMOS}, null, {h: Meh, t: Spc}, Shift, NAV, SYM, null, FN, null]
+    - [null, "▽", null, {h: Meh, t: Spc}, Shift, NAV, SYM, null, FN, null]
   GAME:
     - [Q, W, F, P, B, J, L, U, Y, "'"]
     - [A, R, S, T, G, M, {h: Gui, t: N}, {h: Alt, t: E}, {h: Ctrl, t: I}, {h: Shift, t: O}]
@@ -21,7 +22,7 @@ layers:
     - [Q, W, E, R, T, Y, U, I, O, P]
     - [{h: Shift, t: A}, {h: Ctrl, t: S}, {h: Alt, t: D}, {h: Gui, t: F}, G, H, {h: Gui, t: J}, {h: Alt, t: K}, {h: Ctrl, t: L}, {h: Shift, t: "'"}]
     - [Z, X, C, V, B, N, M, {t: ",", s: ";"}, {t: ".", s: ":"}, {t: "/", s: "\\"}]
-    - [null, {h: WM, t: WMOS}, null, {h: Meh, t: Spc}, Shift, NAV, SYM, null, "▽", null]
+    - [null, "▽", null, {h: Meh, t: Spc}, Shift, NAV, SYM, null, "▽", null]
   SYM:
     - ["!", "@", "#", "$", "%", "^", "&", "*", "|", "?"]
     - [{h: Shift, t: "1"}, {h: Ctrl, t: "2"}, {h: Alt, t: "3"}, {h: Gui, t: "4"}, "5", "6", {h: Gui, t: "7"}, {h: Alt, t: "8"}, {h: Ctrl, t: "9"}, {h: Shift, t: "0"}]
@@ -42,16 +43,11 @@ layers:
     - [Shift, Ctrl, Alt, Gui, null, "←", "↓", "↑", "→", Enter]
     - [null, null, null, null, null, Home, PgDn, PgUp, End, null]
     - [null, "▽", "▽", "▽", "▽", {type: held}, null, "▽", "▽", null]
-  WM:                  # hold LH3 — windows + apps + spaces (F16-F20)
-    - [cal, mail, chatgpt, safari, kitty, "w +", "w -", "h +", "h -", "rot 90"]
-    - ["sp 5", "sp 4", "sp 3", "sp 2", "sp 1", "sp prev", "sp next", "▽", "▽", "▽"]
-    - [balance, "swp prev", "swp next", "foc prev", "foc next", "▽", "▽", "▽", "▽", "▽"]
-    - [null, {type: held}, "▽", "▽", "▽", "▽", "▽", "▽", "▽", null]
-  WMOS:                # tap LH3 — one-shot window ops (F13-F15, left cluster)
-    - ["zoom par", "bsp/stk", split, full, float, "▽", "▽", "▽", "▽", "▽"]
-    - ["→sp 5", "→sp 4", "→sp 3", "→sp 2", "→sp 1", "▽", "▽", "▽", "▽", "▽"]
-    - ["rst skhd", "rst yabai", balance, "mir y", "mir x", "▽", "▽", "▽", "▽", "▽"]
-    - [null, {type: held}, "▽", "▽", "▽", "▽", "▽", "▽", "▽", null]
+  WM:                  # hold LH0+RH0 combo — one window-mgmt layer (F16-F20)
+    - ["→sp 1", "→sp 2", "→sp 3", "→sp 4", "→sp 5", float, full, "zoom par", split, "bsp/stk"]
+    - ["sp 1", "sp 2", "sp 3", "sp 4", "sp 5", "mir x", "mir y", "rot 90", "▽", "▽"]
+    - [balance, "swp prev", "swp next", "foc prev", "foc next", "rst yabai", "rst skhd", "▽", "▽", "▽"]
+    - [null, "▽", "▽", "▽", {type: held}, {type: held}, "▽", "▽", "▽", null]
 
 combos:
   - {p: [11, 12], k: TAB, l: [BASE, QWRT]}
@@ -61,3 +57,6 @@ combos:
   - {p: [17, 18], k: Enter, l: [BASE, QWRT]}
   - {p: [2, 3], k: RESET, l: [FN]}
   - {p: [0, 1], k: BOOT, l: [FN]}
+  - {p: [34, 35], k: WM, l: [BASE, QWRT]}
+  - {p: [1, 2], k: "sp prev", l: [BASE, QWRT]}
+  - {p: [2, 3], k: "sp next", l: [BASE, QWRT]}
