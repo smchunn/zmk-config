@@ -13,7 +13,7 @@ layers:
     - [Q, W, F, P, B, J, L, U, Y, "'"]
     - [{h: Shift, t: A}, {h: Ctrl, t: R}, {h: Alt, t: S}, {h: Gui, t: T}, G, M, {h: Gui, t: N}, {h: Alt, t: E}, {h: Ctrl, t: I}, {h: Shift, t: O}]
     - [Z, X, C, D, V, K, H, {t: ",", s: ";"}, {t: ".", s: ":"}, {t: "/", s: "\\"}]
-    - [float, apps, {t: full, s: "z par"}, {h: Meh, t: Spc}, Shift, NAV, SYM, null, FN, null]
+    - [float, "⌘⇥", {t: full, s: "z par"}, {h: Meh, t: Spc}, Shift, NAV, SYM, null, FN, null]
   GAME:
     - [Q, W, F, P, B, J, L, U, Y, "'"]
     - [A, R, S, T, G, M, {h: Gui, t: N}, {h: Alt, t: E}, {h: Ctrl, t: I}, {h: Shift, t: O}]
